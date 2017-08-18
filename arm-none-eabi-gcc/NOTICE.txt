@@ -1,0 +1,30 @@
+This directory contains redistributions of binaries and source code
+from the 6-2017-q2-update (June 28, 2017) release of the GNU ARM
+Embedded Toolchain originally hosted here:
+
+https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads
+
+The binary releases for Linux and macOS targets are respectively
+included in "linux" and "mac" subdirectories.  For the purposes of GPL
+compliance, the Corresponding Source used to generate these binary
+releases can be found in the "src" subdirectory.  These subdirectories
+contain the results of extracting binary release archives with the
+following checksums.
+
+MD5SUMS:
+
+13747255194398ee08b3ba42e40e9465  gcc-arm-none-eabi-6-2017-q2-update-linux.tar.bz2
+d536d7fb167c04b24f7f0d40cd739cac  gcc-arm-none-eabi-6-2017-q2-update-mac.tar.bz2
+d6eecfea28a5a6762395f10cdbe1594e  gcc-arm-none-eabi-6-2017-q2-update-src.tar.bz2
+
+SHA1SUMS:
+
+0f245753715e5dc8b513c281a0f6dfaed371ad5c  gcc-arm-none-eabi-6-2017-q2-update-linux.tar.bz2
+8288998be46f10b6903af8cf0fbf076a61512666  gcc-arm-none-eabi-6-2017-q2-update-mac.tar.bz2
+f438e4b25e95997382361310e0f65da53c9ca1c0  gcc-arm-none-eabi-6-2017-q2-update-src.tar.bz2
+
+SHA256SUMS:
+
+e68e4b2fe348ecb567c27985355dff75b65319a0f6595d44a18a8c5e05887cc3  gcc-arm-none-eabi-6-2017-q2-update-linux.tar.bz2
+7d3080514a2899d05fc55466cdc477e2448b6a62f536ffca3dd846822ff52900  gcc-arm-none-eabi-6-2017-q2-update-mac.tar.bz2
+da588e901c38b43cc0bd331eb81c24f70f4af946580b60c19aebf4cf9fee3e85  gcc-arm-none-eabi-6-2017-q2-update-src.tar.bz2
