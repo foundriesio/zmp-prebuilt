@@ -32,9 +32,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Strings.html#Strings">Strings</a>
 <hr>
 </div>
 
-<h3 class="section">5.41 <code>strtok</code>, <code>strtok_r</code>, <code>strsep</code>&mdash;get next token from a string</h3>
+<h3 class="section">5.42 <code>strtok</code>, <code>strtok_r</code>, <code>strsep</code>&mdash;get next token from a string</h3>
 
-<p><a name="index-strtok-507"></a><a name="index-strtok_005fr-508"></a><a name="index-strsep-509"></a><strong>Synopsis</strong>
+<p><a name="index-strtok-508"></a><a name="index-strtok_005fr-509"></a><a name="index-strsep-510"></a><strong>Synopsis</strong>
 <pre class="example">     #include &lt;string.h&gt;
      char *strtok(char *restrict <var>source</var>,
          const char *restrict <var>delimiters</var>);
@@ -78,6 +78,13 @@ no more delimiters.
 <code>strtok</code>, <code>strtok_r</code>, and <code>strsep</code> all return a pointer to the
 next token, or <code>NULL</code> if no more tokens can be found.  For
 <code>strsep</code>, a token may be the empty string.
+
+   <pre class="sp">
+
+</pre>
+<strong>Notes</strong><br>
+<code>strtok</code> is unsafe for multi-threaded applications.  <code>strtok_r</code>
+and <code>strsep</code> are thread-safe and should be used instead.
 
    <pre class="sp">
 

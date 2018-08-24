@@ -10,7 +10,7 @@
 <link rel="next" href="GDB_002fMI-Target-Manipulation.html#GDB_002fMI-Target-Manipulation" title="GDB/MI Target Manipulation">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1988-2017 Free Software Foundation, Inc.
+Copyright (C) 1988-2018 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -54,7 +54,7 @@ and to read in and obtain symbol table information.
 
 <h4 class="subheading">The <code>-file-exec-and-symbols</code> Command</h4>
 
-<p><a name="index-g_t_002dfile_002dexec_002dand_002dsymbols-2924"></a>
+<p><a name="index-g_t_002dfile_002dexec_002dand_002dsymbols-3005"></a>
 
 <h5 class="subsubheading">Synopsis</h5>
 
@@ -80,7 +80,7 @@ notification.
 </pre>
 <h4 class="subheading">The <code>-file-exec-file</code> Command</h4>
 
-<p><a name="index-g_t_002dfile_002dexec_002dfile-2925"></a>
+<p><a name="index-g_t_002dfile_002dexec_002dfile-3006"></a>
 
 <h5 class="subsubheading">Synopsis</h5>
 
@@ -105,7 +105,7 @@ notification.
 </pre>
 <h4 class="subheading">The <code>-file-list-exec-source-file</code> Command</h4>
 
-<p><a name="index-g_t_002dfile_002dlist_002dexec_002dsource_002dfile-2926"></a>
+<p><a name="index-g_t_002dfile_002dlist_002dexec_002dsource_002dfile-3007"></a>
 
 <h5 class="subsubheading">Synopsis</h5>
 
@@ -129,7 +129,7 @@ whether or not the file includes preprocessor macro information.
 </pre>
 <h4 class="subheading">The <code>-file-list-exec-source-files</code> Command</h4>
 
-<p><a name="index-g_t_002dfile_002dlist_002dexec_002dsource_002dfiles-2927"></a>
+<p><a name="index-g_t_002dfile_002dlist_002dexec_002dsource_002dfiles-3008"></a>
 
 <h5 class="subsubheading">Synopsis</h5>
 
@@ -155,9 +155,42 @@ name) of a source file.
      {file=gdb_could_not_find_fullpath.c}]
      (gdb)
 </pre>
+<h4 class="subheading">The <code>-file-list-shared-libraries</code> Command</h4>
+
+<p><a name="index-g_t_002dfile_002dlist_002dshared_002dlibraries-3009"></a>
+
+<h5 class="subsubheading">Synopsis</h5>
+
+<pre class="smallexample">      -file-list-shared-libraries [ <var>regexp</var> ]
+</pre>
+   <p>List the shared libraries in the program. 
+With a regular expression <var>regexp</var>, only those libraries whose
+names match <var>regexp</var> are listed.
+
+<h5 class="subsubheading"><span class="sc">gdb</span> Command</h5>
+
+<p>The corresponding <span class="sc">gdb</span> command is `<samp><span class="samp">info shared</span></samp>'.  The fields
+have a similar meaning to the <code>=library-loaded</code> notification. 
+The <code>ranges</code> field specifies the multiple segments belonging to this
+library.  Each range has the following fields:
+
+     <dl>
+<dt>`<samp><span class="samp">from</span></samp>'<dd>The address defining the inclusive lower bound of the segment. 
+<br><dt>`<samp><span class="samp">to</span></samp>'<dd>The address defining the exclusive upper bound of the segment. 
+</dl>
+
+<h5 class="subsubheading">Example</h5>
+
+<pre class="smallexample">     (gdb)
+     -file-list-exec-source-files
+     ^done,shared-libraries=[
+     {id="/lib/libfoo.so",target-name="/lib/libfoo.so",host-name="/lib/libfoo.so",symbols-loaded="1",thread-group="i1",ranges=[{from="0x72815989",to="0x728162c0"}]},
+     {id="/lib/libbar.so",target-name="/lib/libbar.so",host-name="/lib/libbar.so",symbols-loaded="1",thread-group="i1",ranges=[{from="0x76ee48c0",to="0x76ee9160"}]}]
+     (gdb)
+</pre>
 <h4 class="subheading">The <code>-file-symbol-file</code> Command</h4>
 
-<p><a name="index-g_t_002dfile_002dsymbol_002dfile-2928"></a>
+<p><a name="index-g_t_002dfile_002dsymbol_002dfile-3010"></a>
 
 <h5 class="subsubheading">Synopsis</h5>
 

@@ -10,7 +10,7 @@
 <link rel="next" href="Offsetof.html#Offsetof" title="Offsetof">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1988-2016 Free Software Foundation, Inc.
+Copyright (C) 1988-2017 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -52,7 +52,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="C-Extensions.html#C-Extensions">C Exten
 <hr>
 </div>
 
-<h3 class="section">6.49 Using Vector Instructions through Built-in Functions</h3>
+<h3 class="section">6.50 Using Vector Instructions through Built-in Functions</h3>
 
 <p>On some targets, the instruction set contains SIMD vector instructions which
 operate on multiple values contained in one large register at the same time. 
@@ -179,7 +179,7 @@ For mixed operations between a scalar <code>s</code> and a vector <code>v</code>
 <code>s &amp;&amp; v</code> is equivalent to <code>s?v!=0:0</code> (the evaluation is
 short-circuit) and <code>v &amp;&amp; s</code> is equivalent to <code>v!=0 &amp; (s?-1:0)</code>.
 
- <p>Vector shuffling is available using functions
+ <p><a name="index-g_t_005f_005fbuiltin_005fshuffle-3783"></a>Vector shuffling is available using functions
 <code>__builtin_shuffle (vec, mask)</code> and
 <code>__builtin_shuffle (vec0, vec1, mask)</code>. 
 Both functions construct a permutation of elements from one or two

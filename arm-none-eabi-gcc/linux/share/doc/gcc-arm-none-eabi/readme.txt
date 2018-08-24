@@ -1,5 +1,5 @@
-GNU Tools for ARM Embedded Processors
-Version: 6
+GNU Tools for Arm Embedded Processors
+Version: 7
 
 Table of Contents
 * Installing executables on Linux
@@ -71,8 +71,7 @@ the following table shows how to invoke GCC/G++ with correct command line
 options for variants of Cortex-A/R and Cortex-M architectures.
 
 --------------------------------------------------------------------------
-|   ARM core | Command Line Options                       | multilib     |
-| / ARM arch |                                            |              |
+| Arm core   | Command Line Options                       | multilib     |
 |------------|--------------------------------------------|--------------|
 | Cortex-M0+ | -mthumb -mcpu=cortex-m0plus                | thumb        |
 | Cortex-M0  | -mthumb -mcpu=cortex-m0                    | /v6-m        |
@@ -106,7 +105,7 @@ options for variants of Cortex-A/R and Cortex-M architectures.
 |------------|--------------------------------------------|--------------|
 | Cortex-M7  | -mthumb -mcpu=cortex-m7 -mfloat-abi=softfp | thumb        |
 | (Soft FP)  | -mfpu=fpv5-sp-d16                          | /v7e-m       |
-|            |--------------------------------------------| /fpv5-sp     |
+|            |--------------------------------------------| /fpv4-sp     |
 |            | -mthumb -march=armv7e-m -mfloat-abi=softfp | /softfp      |
 |            | -mfpu=fpv5-sp-d16                          |              |
 |            |--------------------------------------------|--------------|
@@ -118,7 +117,7 @@ options for variants of Cortex-A/R and Cortex-M architectures.
 |------------|--------------------------------------------|--------------|
 | Cortex-M7  | -mthumb -mcpu=cortex-m7 -mfloat-abi=hard   | thumb        |
 | (Hard FP)  | -mfpu=fpv5-sp-d16                          | /v7e-m       |
-|            |--------------------------------------------| /fpv5-sp     |
+|            |--------------------------------------------| /fpv4-sp     |
 |            | -mthumb -march=armv7e-m -mfloat-abi=hard   | /hard        |
 |            | -mfpu=fpv5-sp-d16                          |              |
 |            |--------------------------------------------|--------------|
@@ -142,23 +141,21 @@ options for variants of Cortex-A/R and Cortex-M architectures.
 |            | -mthumb -march=armv8-m.main                | /softfp      |
 |            | -mfloat-abi=softfp -mfpu=fpv5-sp-d16       |              |
 |            |--------------------------------------------|--------------|
-|            | -mthumb -mcpu-cortex-m33                   | thumb        |
+|            | -mthumb -march=armv8-m.main                | thumb        |
 |            | -mfloat-abi=softfp -mfpu=fpv5-d16          | /v8-m.main   |
-|            |--------------------------------------------| /fpv5        |
-|            | -mthumb -march=armv8-m.main                | /softfp      |
-|            | -mfloat-abi=softfp -mfpu=fpv5-d16          |              |
+|            |                                            | /fpv5        |
+|            |                                            | /softfp      |
 |------------|--------------------------------------------|--------------|
 | Cortex-M33 | -mthumb -mcpu=cortex-m33                   | thumb        |
 | (Hard FP)  | -mfloat-abi=hard -mfpu=fpv5-sp-d16         | /v8-m.main   |
 |            |--------------------------------------------| /fpv5-sp     |
 |            | -mthumb -march=armv8-m.main                | /hard        |
-|            | -mfloat-abi=softfp -mfpu=fpv5-d16          |              |
+|            | -mfloat-abi=hard -mfpu=fpv5-sp-d16         |              |
 |            |--------------------------------------------|--------------|
-|            | -mthumb -mcpu=cortex-m33                   | thumb        |
+|            | -mthumb -march=armv8-m.main                | thumb        |
 |            | -mfloat-abi=hard -mfpu=fpv5-d16            | /v8-m.main   |
-|            |--------------------------------------------| /fpv5        |
-|            | -mthumb -march=armv8-m.main                | /hard        |
-|            | -mfloat-abi=hard -mfpu=fpv5-d16            |              |
+|            |                                            | /fpv5        |
+|            |                                            | /hard        |
 |------------|--------------------------------------------|--------------|
 | Cortex-R4  | [-mthumb] -march=armv7-r                   | thumb        |
 | Cortex-R5  |                                            | /v7-ar       |
@@ -177,6 +174,22 @@ options for variants of Cortex-A/R and Cortex-M architectures.
 | Cortex-R7  |                                            | /fpv3        |
 | Cortex-R8  |                                            | /hard        |
 | (Hard FP)  |                                            |              |
+|------------|--------------------------------------------|--------------|
+| Cortex-R52 | [-mthumb] -mcpu=cortex-r52                 | thumb        |
+| (No FP)    |--------------------------------------------| /v7-ar       |
+|            | [-mthumb] -march=armv8-r+crc               |              |
+|------------|--------------------------------------------|--------------|
+| Cortex-R52 | [-mthumb] -mcpu=cortex-r52                 | thumb        |
+| (Soft FP)  | -mfloat-abi=softfp -mfpu=neon-fp-armv8     | /v7-ar       |
+|            |--------------------------------------------| /fpv3        |
+|            | [-mthumb] -march=armv8-r+crc               | /softfp      |
+|            | -mfloat-abi=hard -mfpu=neon-fp-armv8       |              |
+|------------|--------------------------------------------|--------------|
+| Cortex-R52 | [-mthumb] -mcpu=cortex-r52                 | thumb        |
+| (Hard FP)  | -mfloat-abi=hard -mfpu=neon-fp-armv8       | /v7-ar       |
+|            |--------------------------------------------| /fpv3        |
+|            | [-mthumb] -march=armv8-r+crc               | /hard        |
+|            | -mfloat-abi=hard -mfpu=neon-fp-armv8       |              |
 |------------|--------------------------------------------|--------------|
 | Cortex-A*  | [-mthumb] -march=armv7-a                   | thumb        |
 | (No FP)    |                                            | /v7-ar       |
@@ -248,8 +261,8 @@ $ arm-none-eabi-gcc --specs=nosys.specs $(OTHER_LINK_OPTIONS)
 
 * Linker scripts & startup code *
 
-Latest update of linker scripts template and startup code is available on 
-http://www.arm.com/cmsis
+Latest update of linker scripts template and startup code is available on
+https://developer.arm.com/embedded/cmsis
 
 * Samples *
 Examples of all above usages are available at:

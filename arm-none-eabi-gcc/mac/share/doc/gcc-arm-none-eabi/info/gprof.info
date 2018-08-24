@@ -1,4 +1,5 @@
-This is gprof.info, produced by makeinfo version 4.8 from gprof.texi.
+This is gprof.info, produced by makeinfo version 4.8 from
+/Users/build/work/GCC-7-build/src/binutils/gprof/gprof.texi.
 
 INFO-DIR-SECTION Software development
 START-INFO-DIR-ENTRY
@@ -7,7 +8,7 @@ END-INFO-DIR-ENTRY
 
    This file documents the gprof profiler of the GNU system.
 
-   Copyright (C) 1988-2017 Free Software Foundation, Inc.
+   Copyright (C) 1988-2018 Free Software Foundation, Inc.
 
    Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -27,7 +28,8 @@ to determine which parts of a program are taking most of the execution
 time.  We assume that you know how to write, compile, and execute
 programs.  GNU `gprof' was written by Jay Fenlason.
 
-   This manual is for `gprof' (GNU Binutils) version 2.28.
+   This manual is for `gprof' (GNU Tools for Arm Embedded Processors
+7-2018-q2-update) version 2.30.0.
 
    This document is distributed under the terms of the GNU Free
 Documentation License version 1.3.  A copy of the license is included
@@ -2444,35 +2446,35 @@ permit their use in free software.
 
 
 Tag Table:
-Node: Top722
-Node: Introduction2045
-Node: Compiling4537
-Node: Executing8593
-Node: Invoking11381
-Node: Output Options12796
-Node: Analysis Options19885
-Node: Miscellaneous Options23803
-Node: Deprecated Options25058
-Node: Symspecs27127
-Node: Output28953
-Node: Flat Profile29993
-Node: Call Graph34946
-Node: Primary38178
-Node: Callers40766
-Node: Subroutines42883
-Node: Cycles44724
-Node: Line-by-line51501
-Node: Annotated Source55574
-Node: Inaccuracy58573
-Node: Sampling Error58831
-Node: Assumptions61735
-Node: How do I?63205
-Node: Incompatibilities64759
-Node: Details66253
-Node: Implementation66646
-Node: File Format72543
-Node: Internals76833
-Node: Debugging85328
-Node: GNU Free Documentation License86929
+Node: Top771
+Node: Introduction2138
+Node: Compiling4630
+Node: Executing8686
+Node: Invoking11474
+Node: Output Options12889
+Node: Analysis Options19978
+Node: Miscellaneous Options23896
+Node: Deprecated Options25151
+Node: Symspecs27220
+Node: Output29046
+Node: Flat Profile30086
+Node: Call Graph35039
+Node: Primary38271
+Node: Callers40859
+Node: Subroutines42976
+Node: Cycles44817
+Node: Line-by-line51594
+Node: Annotated Source55667
+Node: Inaccuracy58666
+Node: Sampling Error58924
+Node: Assumptions61828
+Node: How do I?63298
+Node: Incompatibilities64852
+Node: Details66346
+Node: Implementation66739
+Node: File Format72636
+Node: Internals76926
+Node: Debugging85421
+Node: GNU Free Documentation License87022
 
 End Tag Table

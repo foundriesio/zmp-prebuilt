@@ -10,7 +10,7 @@
 <link rel="next" href="Containers.html#Containers" title="Containers">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1988-2016 Free Software Foundation, Inc.
+Copyright (C) 1988-2017 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -54,7 +54,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Tree-overview.html#Tree-overview">Tree 
 
 <h4 class="subsection">10.2.2 Identifiers</h4>
 
-<p><a name="index-identifier-1726"></a><a name="index-name-1727"></a><a name="index-IDENTIFIER_005fNODE-1728"></a>
+<p><a name="index-identifier-1727"></a><a name="index-name-1728"></a><a name="index-IDENTIFIER_005fNODE-1729"></a>
 An <code>IDENTIFIER_NODE</code> represents a slightly more general concept
 than the standard C or C++ concept of identifier.  In particular, an
 <code>IDENTIFIER_NODE</code> may contain a `<samp><span class="samp">$</span></samp>', or other extraordinary
@@ -68,21 +68,21 @@ same identifier.  Therefore, you may use pointer equality to compare
 
  <p>You can use the following macros to access identifiers:
      <dl>
-<dt><code>IDENTIFIER_POINTER</code><a name="index-IDENTIFIER_005fPOINTER-1729"></a><dd>The string represented by the identifier, represented as a
+<dt><code>IDENTIFIER_POINTER</code><a name="index-IDENTIFIER_005fPOINTER-1730"></a><dd>The string represented by the identifier, represented as a
 <code>char*</code>.  This string is always <code>NUL</code>-terminated, and contains
 no embedded <code>NUL</code> characters.
 
-     <br><dt><code>IDENTIFIER_LENGTH</code><a name="index-IDENTIFIER_005fLENGTH-1730"></a><dd>The length of the string returned by <code>IDENTIFIER_POINTER</code>, not
+     <br><dt><code>IDENTIFIER_LENGTH</code><a name="index-IDENTIFIER_005fLENGTH-1731"></a><dd>The length of the string returned by <code>IDENTIFIER_POINTER</code>, not
 including the trailing <code>NUL</code>.  This value of
 <code>IDENTIFIER_LENGTH (x)</code> is always the same as <code>strlen
 (IDENTIFIER_POINTER (x))</code>.
 
-     <br><dt><code>IDENTIFIER_OPNAME_P</code><a name="index-IDENTIFIER_005fOPNAME_005fP-1731"></a><dd>This predicate holds if the identifier represents the name of an
+     <br><dt><code>IDENTIFIER_OPNAME_P</code><a name="index-IDENTIFIER_005fOPNAME_005fP-1732"></a><dd>This predicate holds if the identifier represents the name of an
 overloaded operator.  In this case, you should not depend on the
 contents of either the <code>IDENTIFIER_POINTER</code> or the
 <code>IDENTIFIER_LENGTH</code>.
 
-     <br><dt><code>IDENTIFIER_TYPENAME_P</code><a name="index-IDENTIFIER_005fTYPENAME_005fP-1732"></a><dd>This predicate holds if the identifier represents the name of a
+     <br><dt><code>IDENTIFIER_TYPENAME_P</code><a name="index-IDENTIFIER_005fTYPENAME_005fP-1733"></a><dd>This predicate holds if the identifier represents the name of a
 user-defined conversion operator.  In this case, the <code>TREE_TYPE</code> of
 the <code>IDENTIFIER_NODE</code> holds the type to which the conversion
 operator converts.

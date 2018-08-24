@@ -10,7 +10,7 @@
 <link rel="next" href="Return-Address.html#Return-Address" title="Return Address">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1988-2016 Free Software Foundation, Inc.
+Copyright (C) 1988-2017 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -52,12 +52,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="C-Extensions.html#C-Extensions">C Exten
 <hr>
 </div>
 
-<h3 class="section">6.47 Function Names as Strings</h3>
+<h3 class="section">6.48 Function Names as Strings</h3>
 
-<p><a name="index-g_t_0040code_007b_005f_005ffunc_005f_005f_007d-identifier-3690"></a><a name="index-g_t_0040code_007b_005f_005fFUNCTION_005f_005f_007d-identifier-3691"></a><a name="index-g_t_0040code_007b_005f_005fPRETTY_005fFUNCTION_005f_005f_007d-identifier-3692"></a>
-GCC provides three magic variables that hold the name of the current
-function, as a string.  The first of these is <code>__func__</code>, which
-is part of the C99 standard:
+<p><a name="index-g_t_0040code_007b_005f_005ffunc_005f_005f_007d-identifier-3776"></a><a name="index-g_t_0040code_007b_005f_005fFUNCTION_005f_005f_007d-identifier-3777"></a><a name="index-g_t_0040code_007b_005f_005fPRETTY_005fFUNCTION_005f_005f_007d-identifier-3778"></a>
+GCC provides three magic constants that hold the name of the current
+function as a string.  In C++11 and later modes, all three are treated
+as constant expressions and can be used in <code>constexpr</code> constexts. 
+The first of these constants is <code>__func__</code>, which is part of
+the C99 standard:
 
  <p>The identifier <code>__func__</code> is implicitly declared by the translator
 as if, immediately following the opening brace of each function
@@ -66,19 +68,20 @@ definition, the declaration
 <pre class="smallexample">     static const char __func__[] = "function-name";
 </pre>
  <p class="noindent">appeared, where function-name is the name of the lexically-enclosing
-function.  This name is the unadorned name of the function.
+function.  This name is the unadorned name of the function.  As an
+extension, at file (or, in C++, namespace scope), <code>__func__</code>
+evaluates to the empty string.
 
  <p><code>__FUNCTION__</code> is another name for <code>__func__</code>, provided for
 backward compatibility with old versions of GCC.
 
  <p>In C, <code>__PRETTY_FUNCTION__</code> is yet another name for
-<code>__func__</code>.  However, in C++, <code>__PRETTY_FUNCTION__</code> contains
-the type signature of the function as well as its bare name.  For
-example, this program:
+<code>__func__</code>, except that at file (or, in C++, namespace scope),
+it evaluates to the string <code>"top level"</code>.  In addition, in C++,
+<code>__PRETTY_FUNCTION__</code> contains the signature of the function as
+well as its bare name.  For example, this program:
 
-<pre class="smallexample">     extern "C" {
-     extern int printf (char *, ...);
-     }
+<pre class="smallexample">     extern "C" int printf (const char *, ...);
      
      class a {
       public:
@@ -103,7 +106,7 @@ example, this program:
      __PRETTY_FUNCTION__ = void a::sub(int)
 </pre>
  <p>These identifiers are variables, not preprocessor macros, and may not
-be used to initialize <code>char</code> arrays or be concatenated with other string
+be used to initialize <code>char</code> arrays or be concatenated with string
 literals.
 
  </body></html>

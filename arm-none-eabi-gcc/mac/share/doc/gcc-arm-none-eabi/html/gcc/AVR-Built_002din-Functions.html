@@ -10,7 +10,7 @@
 <link rel="next" href="Blackfin-Built_002din-Functions.html#Blackfin-Built_002din-Functions" title="Blackfin Built-in Functions">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1988-2016 Free Software Foundation, Inc.
+Copyright (C) 1988-2017 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -53,7 +53,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Target-Builtins.html#Target-Builtins">T
 <hr>
 </div>
 
-<h4 class="subsection">6.59.10 AVR Built-in Functions</h4>
+<h4 class="subsection">6.60.10 AVR Built-in Functions</h4>
 
 <p>For each built-in function for AVR, there is an equally named,
 uppercase built-in macro defined. That way users can easily query if
@@ -94,7 +94,9 @@ the number of the flash segment (the 64 KiB chunk) where the address
 points to.  Counting starts at <code>0</code>. 
 If the address does not point to flash memory, return <code>-1</code>.
 
-<pre class="smallexample">     unsigned char __builtin_avr_insert_bits (unsigned long map, unsigned char bits, unsigned char val)
+<pre class="smallexample">     unsigned char __builtin_avr_insert_bits (unsigned long map,
+                                              unsigned char bits,
+                                              unsigned char val)
 </pre>
  <p class="noindent">Insert bits from <var>bits</var> into <var>val</var> and return the resulting
 value. The nibbles of <var>map</var> determine how the insertion is
@@ -129,5 +131,10 @@ output values to non-contiguous port layouts. Some examples:
  <pre class="smallexample">     // reverse the bit order of bits
      __builtin_avr_insert_bits (0x01234567, bits, 0)
 </pre>
+ <pre class="smallexample">     void __builtin_avr_nops (unsigned count)
+</pre>
+ <p class="noindent">Insert <code>count</code> <code>NOP</code> instructions. 
+The number of instructions must be a compile-time integer constant.
+
  </body></html>
 

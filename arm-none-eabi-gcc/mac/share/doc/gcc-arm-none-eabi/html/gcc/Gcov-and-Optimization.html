@@ -10,7 +10,7 @@
 <link rel="next" href="Gcov-Data-Files.html#Gcov-Data-Files" title="Gcov Data Files">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1988-2016 Free Software Foundation, Inc.
+Copyright (C) 1988-2017 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -106,11 +106,17 @@ now be calculable at compile time in some instances.  Because the
 coverage of all the uses of the inline function will be shown for the
 same source lines, the line counts themselves might seem inconsistent.
 
- <p>Long-running applications can use the <code>_gcov_reset</code> and <code>_gcov_dump</code>
+ <p>Long-running applications can use the <code>__gcov_reset</code> and <code>__gcov_dump</code>
 facilities to restrict profile collection to the program region of
-interest. Calling <code>_gcov_reset(void)</code> will clear all profile counters
-to zero, and calling <code>_gcov_dump(void)</code> will cause the profile information
-collected at that point to be dumped to <samp><span class="file">.gcda</span></samp> output files.
+interest. Calling <code>__gcov_reset(void)</code> will clear all profile counters
+to zero, and calling <code>__gcov_dump(void)</code> will cause the profile information
+collected at that point to be dumped to <samp><span class="file">.gcda</span></samp> output files. 
+Instrumented applications use a static destructor with priority 99
+to invoke the <code>__gcov_dump</code> function. Thus <code>__gcov_dump</code>
+is executed after all user defined static destructors,
+as well as handlers registered with <code>atexit</code>. 
+If an executable loads a dynamic shared object via dlopen functionality,
+<samp><span class="option">-Wl,--dynamic-list-data</span></samp> is needed to dump all profile data.
 
 <!-- man end -->
 </body></html>

@@ -10,7 +10,7 @@
 <link rel="next" href="Conditions.html#Conditions" title="Conditions">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1988-2017 Free Software Foundation, Inc.
+Copyright (C) 1988-2018 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -48,7 +48,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Breakpoints.html#Breakpoints">Breakpoin
 
 <h4 class="subsection">5.1.5 Disabling Breakpoints</h4>
 
-<p><a name="index-enable_002fdisable-a-breakpoint-301"></a>Rather than deleting a breakpoint, watchpoint, or catchpoint, you might
+<p><a name="index-enable_002fdisable-a-breakpoint-313"></a>Rather than deleting a breakpoint, watchpoint, or catchpoint, you might
 prefer to <dfn>disable</dfn> it.  This makes the breakpoint inoperative as if
 it had been deleted, but remembers the information on the breakpoint so
 that you can <dfn>enable</dfn> it again later.
@@ -82,28 +82,28 @@ set with the <code>tbreak</code> command starts out in this state.
 watchpoints, and catchpoints:
 
      
-<a name="index-disable-302"></a>
-<a name="index-dis-_0040r_007b_0028_0040code_007bdisable_007d_0029_007d-303"></a>
-<dl><dt><code>disable </code><span class="roman">[</span><code>breakpoints</code><span class="roman">]</span> <span class="roman">[</span><var>range</var><code>...</code><span class="roman">]</span><dd>Disable the specified breakpoints&mdash;or all breakpoints, if none are
+<a name="index-disable-314"></a>
+<a name="index-dis-_0040r_007b_0028_0040code_007bdisable_007d_0029_007d-315"></a>
+<dl><dt><code>disable </code><span class="roman">[</span><code>breakpoints</code><span class="roman">]</span> <span class="roman">[</span><var>list</var><code>...</code><span class="roman">]</span><dd>Disable the specified breakpoints&mdash;or all breakpoints, if none are
 listed.  A disabled breakpoint has no effect but is not forgotten.  All
 options such as ignore-counts, conditions and commands are remembered in
 case the breakpoint is enabled again later.  You may abbreviate
 <code>disable</code> as <code>dis</code>.
 
-     <p><a name="index-enable-304"></a><br><dt><code>enable </code><span class="roman">[</span><code>breakpoints</code><span class="roman">]</span> <span class="roman">[</span><var>range</var><code>...</code><span class="roman">]</span><dd>Enable the specified breakpoints (or all defined breakpoints).  They
+     <p><a name="index-enable-316"></a><br><dt><code>enable </code><span class="roman">[</span><code>breakpoints</code><span class="roman">]</span> <span class="roman">[</span><var>list</var><code>...</code><span class="roman">]</span><dd>Enable the specified breakpoints (or all defined breakpoints).  They
 become effective once again in stopping your program.
 
-     <br><dt><code>enable </code><span class="roman">[</span><code>breakpoints</code><span class="roman">]</span><code> once </code><var>range</var><code>...</code><dd>Enable the specified breakpoints temporarily.  <span class="sc">gdb</span> disables any
+     <br><dt><code>enable </code><span class="roman">[</span><code>breakpoints</code><span class="roman">]</span><code> once </code><var>list</var><code>...</code><dd>Enable the specified breakpoints temporarily.  <span class="sc">gdb</span> disables any
 of these breakpoints immediately after stopping your program.
 
-     <br><dt><code>enable </code><span class="roman">[</span><code>breakpoints</code><span class="roman">]</span><code> count </code><var>count</var> <var>range</var><code>...</code><dd>Enable the specified breakpoints temporarily.  <span class="sc">gdb</span> records
+     <br><dt><code>enable </code><span class="roman">[</span><code>breakpoints</code><span class="roman">]</span><code> count </code><var>count</var> <var>list</var><code>...</code><dd>Enable the specified breakpoints temporarily.  <span class="sc">gdb</span> records
 <var>count</var> with each of the specified breakpoints, and decrements a
 breakpoint's count when it is hit.  When any count reaches 0,
 <span class="sc">gdb</span> disables that breakpoint.  If a breakpoint has an ignore
 count (see <a href="Conditions.html#Conditions">Break Conditions</a>), that will be
 decremented to 0 before <var>count</var> is affected.
 
-     <br><dt><code>enable </code><span class="roman">[</span><code>breakpoints</code><span class="roman">]</span><code> delete </code><var>range</var><code>...</code><dd>Enable the specified breakpoints to work once, then die.  <span class="sc">gdb</span>
+     <br><dt><code>enable </code><span class="roman">[</span><code>breakpoints</code><span class="roman">]</span><code> delete </code><var>list</var><code>...</code><dd>Enable the specified breakpoints to work once, then die.  <span class="sc">gdb</span>
 deletes any of these breakpoints as soon as your program stops there. 
 Breakpoints set by the <code>tbreak</code> command start out in this state. 
 </dl>

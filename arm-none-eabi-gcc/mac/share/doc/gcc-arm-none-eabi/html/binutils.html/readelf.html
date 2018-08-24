@@ -9,7 +9,7 @@
 <link rel="next" href="elfedit.html#elfedit" title="elfedit">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1991-2017 Free Software Foundation, Inc.
+Copyright (C) 1991-2018 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
@@ -69,8 +69,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
              [<samp><span class="option">-R</span></samp> &lt;number or name&gt;|<samp><span class="option">--relocated-dump=</span></samp>&lt;number or name&gt;]
              [<samp><span class="option">-z</span></samp>|<samp><span class="option">--decompress</span></samp>]
              [<samp><span class="option">-c</span></samp>|<samp><span class="option">--archive-index</span></samp>]
-             [<samp><span class="option">-w[lLiaprmfFsoRt]</span></samp>|
-              <samp><span class="option">--debug-dump</span></samp>[=rawline,=decodedline,=info,=abbrev,=pubnames,=aranges,=macro,=frames,=frames-interp,=str,=loc,=Ranges,=pubtypes,=trace_info,=trace_abbrev,=trace_aranges,=gdb_index]]
+             [<samp><span class="option">-w[lLiaprmfFsoRtUuTgAckK]</span></samp>|
+              <samp><span class="option">--debug-dump</span></samp>[=rawline,=decodedline,=info,=abbrev,=pubnames,=aranges,=macro,=frames,=frames-interp,=str,=loc,=Ranges,=pubtypes,=trace_info,=trace_abbrev,=trace_aranges,=gdb_index,=addr,=cu_index,=links,=follow-links]]
              [<samp><span class="option">--dwarf-depth=</span><var>n</var></samp>]
              [<samp><span class="option">--dwarf-start=</span><var>n</var></samp>]
              [<samp><span class="option">-I</span></samp>|<samp><span class="option">--histogram</span></samp>]
@@ -101,8 +101,13 @@ given.
      <dl>
 <dt><samp><span class="env">-a</span></samp><dt><samp><span class="env">--all</span></samp><dd>Equivalent to specifying <samp><span class="option">--file-header</span></samp>,
 <samp><span class="option">--program-headers</span></samp>, <samp><span class="option">--sections</span></samp>, <samp><span class="option">--symbols</span></samp>,
-<samp><span class="option">--relocs</span></samp>, <samp><span class="option">--dynamic</span></samp>, <samp><span class="option">--notes</span></samp> and
-<samp><span class="option">--version-info</span></samp>.
+<samp><span class="option">--relocs</span></samp>, <samp><span class="option">--dynamic</span></samp>, <samp><span class="option">--notes</span></samp>,
+<samp><span class="option">--version-info</span></samp>, <samp><span class="option">--arch-specific</span></samp>, <samp><span class="option">--unwind</span></samp>,
+<samp><span class="option">--section-groups</span></samp> and <samp><span class="option">--histogram</span></samp>.
+
+     <p>Note - this option does not enable <samp><span class="option">--use-dynamic</span></samp> itself, so
+if that option is not present on the command line then dynamic symbols
+and dynamic relocs will not be displayed.
 
      <br><dt><samp><span class="env">-h</span></samp><dt><samp><span class="env">--file-header</span></samp><dd><a name="index-ELF-file-header-information-149"></a>Displays the information contained in the ELF header at the start of the
 file.
@@ -153,6 +158,9 @@ is any.
 symbol hash tables in the file's dynamic section, rather than the
 symbol table sections.
 
+     <p>When displaying relocations, this option makes <samp><span class="command">readelf</span></samp>
+display the dynamic relocations rather than the static relocations.
+
      <br><dt><samp><span class="env">-x &lt;number or name&gt;</span></samp><dt><samp><span class="env">--hex-dump=&lt;number or name&gt;</span></samp><dd>Displays the contents of the indicated section as a hexadecimal bytes. 
 A number identifies a particular section by index in the section table;
 any other string identifies all sections with that name in the object file.
@@ -175,23 +183,88 @@ section(s) are not compressed then they are displayed as is.
 of binary archives.  Performs the same function as the <samp><span class="option">t</span></samp>
 command to <samp><span class="command">ar</span></samp>, but without using the BFD library.  See <a href="ar.html#ar">ar</a>.
 
-     <br><dt><samp><span class="env">-w[lLiaprmfFsoRt]</span></samp><dt><samp><span class="env">--debug-dump[=rawline,=decodedline,=info,=abbrev,=pubnames,=aranges,=macro,=frames,=frames-interp,=str,=loc,=Ranges,=pubtypes,=trace_info,=trace_abbrev,=trace_aranges,=gdb_index]</span></samp><dd>Displays the contents of the debug sections in the file, if any are
-present.  If one of the optional letters or words follows the switch
-then only data found in those specific sections will be dumped.
+     <br><dt><samp><span class="env">-w[lLiaprmfFsoRtUuTgAckK]</span></samp><dt><samp><span class="env">--debug-dump[=rawline,=decodedline,=info,=abbrev,=pubnames,=aranges,=macro,=frames,=frames-interp,=str,=loc,=Ranges,=pubtypes,=trace_info,=trace_abbrev,=trace_aranges,=gdb_index,=addr,=cu_index,=links,=follow-links]</span></samp><dd><!-- This file contains the entry for the -w/-debug-dump (readelf) and -->
+<!-- W/-dwarf (objdump) option that is common to both readelf and objdump. -->
 
-     <p>Note that there is no single letter option to display the content of
-trace sections or .gdb_index.
+     <p>Displays the contents of the DWARF debug sections in the file, if any
+are present.  Compressed debug sections are automatically decompressed
+(temporarily) before they are displayed.  If one or more of the
+optional letters or words follows the switch then only those type(s)
+of data will be dumped.  The letters and words refer to the following
+information:
 
-     <p>Note: the <samp><span class="option">=decodedline</span></samp> option will display the interpreted
-contents of a .debug_line section whereas the <samp><span class="option">=rawline</span></samp> option
-dumps the contents in a raw format.
+     <!-- Please Keep This Table Alpha Sorted. -->
+<dl>
+<dt><code>a</code><dt><code>=abbrev</code><dd>Displays the contents of the `<samp><span class="samp">.debug_abbrev</span></samp>' section.
 
-     <p>Note: the <samp><span class="option">=frames-interp</span></samp> option will display the interpreted
-contents of a .debug_frame section whereas the <samp><span class="option">=frames</span></samp> option
-dumps the contents in a raw format.
+          <br><dt><code>A</code><dt><code>=addr</code><dd>Displays the contents of the `<samp><span class="samp">.debug_addr</span></samp>' section.
 
-     <p>Note: the output from the <samp><span class="option">=info</span></samp> option can also be affected
-by the options <samp><span class="option">--dwarf-depth</span></samp> and <samp><span class="option">--dwarf-start</span></samp>.
+          <br><dt><code>c</code><dt><code>=cu_index</code><dd>Displays the contents of the `<samp><span class="samp">.debug_cu_index</span></samp>' and/or
+`<samp><span class="samp">.debug_tu_index</span></samp>' sections.
+
+          <br><dt><code>f</code><dt><code>=frames</code><dd>Display the raw contents of a `<samp><span class="samp">.debug_frame</span></samp>' section.
+
+          <br><dt><code>F</code><br><dt><code>=frame-interp</code><dd>Display the interpreted contents of a `<samp><span class="samp">.debug_frame</span></samp>' section.
+
+          <br><dt><code>g</code><dt><code>=gdb_index</code><dd>Displays the contents of the `<samp><span class="samp">.gdb_index</span></samp>' and/or
+`<samp><span class="samp">.debug_names</span></samp>' sections.
+
+          <br><dt><code>i</code><dt><code>=info</code><dd>Displays the contents of the `<samp><span class="samp">.debug_info</span></samp>' section.  Note: the
+output from this option can also be restricted by the use of the
+<samp><span class="option">--dwarf-depth</span></samp> and <samp><span class="option">--dwarf-start</span></samp> options.
+
+          <br><dt><code>k</code><dt><code>=links</code><dd>Displays the contents of the `<samp><span class="samp">.gnu_debuglink</span></samp>' and/or
+`<samp><span class="samp">.gnu_debugaltlink</span></samp>' sections.  Also displays the link to a
+separate dwarf object file (dwo), if one is specified by the
+DW_AT_GNU_dwo_name or DW_AT_dwo_name attributes in the
+`<samp><span class="samp">.debug_info</span></samp>' section.
+
+          <br><dt><code>K</code><dt><code>=follow-links</code><dd>Display the contents of any selected debug sections that are found in
+a linked, separate debug info file.  This can result in multiple
+versions of the same debug section being displayed if both the main
+file and the separate debug info file contain sections with the same
+name.
+
+          <p>In addition, when displaying DWARF attributes, if a form is found that
+references the separate debug info file, then the referenced contents
+will also be displayed.
+
+          <br><dt><code>l</code><dt><code>=rawline</code><dd>Displays the contents of the `<samp><span class="samp">.debug_line</span></samp>' section in a raw
+format.
+
+          <br><dt><code>L</code><br><dt><code>=decodedline</code><dd>Displays the interpreted contents of the `<samp><span class="samp">.debug_line</span></samp>' section.
+
+          <br><dt><code>m</code><dt><code>=macro</code><dd>Displays the contents of the `<samp><span class="samp">.debug_macro</span></samp>' and/or
+`<samp><span class="samp">.debug_macinfo</span></samp>' sections.
+
+          <br><dt><code>o</code><dt><code>=loc</code><dd>Displays the contents of the `<samp><span class="samp">.debug_loc</span></samp>' and/or
+`<samp><span class="samp">.debug_loclists</span></samp>' sections.
+
+          <br><dt><code>p</code><dt><code>=pubnames</code><dd>Displays the contents of the `<samp><span class="samp">.debug_pubnames</span></samp>' and/or
+`<samp><span class="samp">.debug_gnu_pubnames</span></samp>' sections.
+
+          <br><dt><code>r</code><dt><code>=aranges</code><dd>Displays the contents of the `<samp><span class="samp">.debug_aranges</span></samp>' section.
+
+          <br><dt><code>R</code><dt><code>=Ranges</code><dd>Displays the contents of the `<samp><span class="samp">.debug_ranges</span></samp>' and/or
+`<samp><span class="samp">.debug_rnglists</span></samp>' sections.
+
+          <br><dt><code>s</code><dt><code>=str</code><dd>Displays the contents of the `<samp><span class="samp">.debug_str</span></samp>', `<samp><span class="samp">.debug_line_str</span></samp>'
+and/or `<samp><span class="samp">.debug_str_offsets</span></samp>' sections.
+
+          <br><dt><code>t</code><dt><code>=pubtype</code><dd>Displays the contents of the `<samp><span class="samp">.debug_pubtypes</span></samp>' and/or
+`<samp><span class="samp">.debug_gnu_pubtypes</span></samp>' sections.
+
+          <br><dt><code>T</code><dt><code>=trace_aranges</code><dd>Displays the contents of the `<samp><span class="samp">.trace_aranges</span></samp>' section.
+
+          <br><dt><code>u</code><dt><code>=trace_abbrev</code><dd>Displays the contents of the `<samp><span class="samp">.trace_abbrev</span></samp>' section.
+
+          <br><dt><code>U</code><dt><code>=trace_info</code><dd>Displays the contents of the `<samp><span class="samp">.trace_info</span></samp>' section.
+
+     </dl>
+
+     <p>Note: displaying the contents of `<samp><span class="samp">.debug_static_funcs</span></samp>',
+`<samp><span class="samp">.debug_static_vars</span></samp>' and `<samp><span class="samp">debug_weaknames</span></samp>' sections is not
+currently supported.
 
      <br><dt><samp><span class="env">--dwarf-depth=</span><var>n</var></samp><dd>Limit the dump of the <code>.debug_info</code> section to <var>n</var> children. 
 This is only useful with <samp><span class="option">--debug-dump=info</span></samp>.  The default is

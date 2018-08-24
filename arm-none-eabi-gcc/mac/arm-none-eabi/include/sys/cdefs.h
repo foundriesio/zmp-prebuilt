@@ -385,7 +385,7 @@
 #endif
 
 #if __GNUC_PREREQ__(3, 1) || (defined(__INTEL_COMPILER) && __INTEL_COMPILER >= 800)
-#define	__always_inline	__attribute__((__always_inline__))
+#define	__always_inline	__inline__ __attribute__((__always_inline__))
 #else
 #define	__always_inline
 #endif
@@ -397,7 +397,7 @@
 #endif
 
 #if __GNUC_PREREQ__(3, 3)
-#define	__nonnull(x)	__attribute__((__nonnull__(x)))
+#define	__nonnull(x)	__attribute__((__nonnull__ x))
 #define	__nonnull_all	__attribute__((__nonnull__))
 #else
 #define	__nonnull(x)
@@ -681,6 +681,8 @@
 #endif
 
 /* Structure implements a lock. */
+/* FIXME: Use __lockable__, etc. to avoid colliding with user namespace macros,
+ * once clang is fixed: https://bugs.llvm.org/show_bug.cgi?id=34319 */
 #define	__lockable		__lock_annotate(lockable)
 
 /* Function acquires an exclusive or shared lock. */

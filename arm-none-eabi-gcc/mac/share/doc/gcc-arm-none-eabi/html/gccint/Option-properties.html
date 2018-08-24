@@ -9,7 +9,7 @@
 <link rel="prev" href="Option-file-format.html#Option-file-format" title="Option file format">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1988-2016 Free Software Foundation, Inc.
+Copyright (C) 1988-2017 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -263,6 +263,12 @@ other than <samp><span class="option">--help</span></samp>.
 <code>Var</code> should be saved and restored when the optimization level is
 changed with <code>optimize</code> attributes.
 
+     <br><dt><code>PerFunction</code><dd>This is an option that can be overridden on a per-function basis. 
+<code>Optimization</code> implies <code>PerFunction</code>, but options that do not
+affect executable code generation may use this flag instead, so that the
+option is not taken into account in ways that might affect executable
+code generation.
+
      <br><dt><code>Undocumented</code><dd>The option is deliberately missing documentation and should not
 be included in the <samp><span class="option">--help</span></samp> output.
 
@@ -321,7 +327,7 @@ C-family front-ends.
  </dl>
 
 <!-- markers: BUG TODO -->
-<!-- Copyright (C) 1988-2016 Free Software Foundation, Inc. -->
+<!-- Copyright (C) 1988-2017 Free Software Foundation, Inc. -->
 <!-- This is part of the GCC manual. -->
 <!-- For copying conditions, see the file gcc.texi. -->
 </body></html>

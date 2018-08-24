@@ -10,7 +10,7 @@
 <link rel="next" href="System_002dspecific-Predefined-Macros.html#System_002dspecific-Predefined-Macros" title="System-specific Predefined Macros">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1987-2016 Free Software Foundation, Inc.
+Copyright (C) 1987-2017 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -74,20 +74,17 @@ which use it.  Otherwise, the precompiled headers will not be used.
      <br><dt><code>__GNUC__</code><dt><code>__GNUC_MINOR__</code><dt><code>__GNUC_PATCHLEVEL__</code><dd>These macros are defined by all GNU compilers that use the C
 preprocessor: C, C++, Objective-C and Fortran.  Their values are the major
 version, minor version, and patch level of the compiler, as integer
-constants.  For example, GCC 3.2.1 will define <code>__GNUC__</code> to 3,
-<code>__GNUC_MINOR__</code> to 2, and <code>__GNUC_PATCHLEVEL__</code> to 1.  These
+constants.  For example, GCC version <var>x</var>.<var>y</var>.<var>z</var>
+defines <code>__GNUC__</code> to <var>x</var>, <code>__GNUC_MINOR__</code> to <var>y</var>,
+and <code>__GNUC_PATCHLEVEL__</code> to <var>z</var>.  These
 macros are also defined if you invoke the preprocessor directly.
-
-     <p><code>__GNUC_PATCHLEVEL__</code> is new to GCC 3.0; it is also present in the
-widely-used development snapshots leading up to 3.0 (which identify
-themselves as GCC 2.96 or 2.97, depending on which snapshot you have).
 
      <p>If all you need to know is whether or not your program is being compiled
 by GCC, or a non-GCC compiler that claims to accept the GNU C dialects,
 you can simply test <code>__GNUC__</code>.  If you need to write code
 which depends on a specific version, you must be more careful.  Each
 time the minor version is increased, the patch level is reset to zero;
-each time the major version is increased (which happens rarely), the
+each time the major version is increased, the
 minor version and patch level are reset.  If you wish to use the
 predefined macros directly in the conditional, you will need to write it
 like this:
@@ -116,9 +113,8 @@ testing <code>(__GNUC__&nbsp;&amp;&amp;&nbsp;__cplusplus)<!-- /@w --></code>.
      <br><dt><code>__STRICT_ANSI__</code><dd>GCC defines this macro if and only if the <samp><span class="option">-ansi</span></samp> switch, or a
 <samp><span class="option">-std</span></samp> switch specifying strict conformance to some version of ISO C
 or ISO C++, was specified when GCC was invoked.  It is defined to `<samp><span class="samp">1</span></samp>'. 
-This macro exists primarily to direct GNU libc's header files to
-restrict their definitions to the minimal set found in the 1989 C
-standard.
+This macro exists primarily to direct GNU libc's header files to use only
+definitions found in standard C.
 
      <br><dt><code>__BASE_FILE__</code><dd>This macro expands to the name of the main input file, in the form
 of a C string constant.  This is the source file that was specified
@@ -157,17 +153,13 @@ without <code>extern</code> or <code>static</code>.  They will not contain any
 definitions of any functions declared <code>extern inline</code>.
 
      <br><dt><code>__GNUC_STDC_INLINE__</code><dd>GCC defines this macro if functions declared <code>inline</code> will be
-handled according to the ISO C99 standard.  Object files will contain
+handled according to the ISO C99 or later standards.  Object files will contain
 externally visible definitions of all functions declared <code>extern
 inline</code>.  They will not contain definitions of any functions declared
 <code>inline</code> without <code>extern</code>.
 
      <p>If this macro is defined, GCC supports the <code>gnu_inline</code> function
-attribute as a way to always get the gnu90 behavior.  Support for
-this and <code>__GNUC_GNU_INLINE__</code> was added in GCC 4.1.3.  If
-neither macro is defined, an older version of GCC is being used:
-<code>inline</code> functions will be compiled in gnu90 mode, and the
-<code>gnu_inline</code> function attribute will not be recognized.
+attribute as a way to always get the gnu90 behavior.
 
      <br><dt><code>__CHAR_UNSIGNED__</code><dd>GCC defines this macro if and only if the data type <code>char</code> is
 unsigned on the target machine.  It exists to cause the standard header
@@ -243,6 +235,13 @@ implementation of that header work correctly.  You should not use
 these macros directly; instead, include the appropriate headers.  Some
 of these macros may not be defined on particular systems if GCC does
 not provide a <samp><span class="file">stdint.h</span></samp> header on those systems.
+
+     <br><dt><code>__SCHAR_WIDTH__</code><dt><code>__SHRT_WIDTH__</code><dt><code>__INT_WIDTH__</code><dt><code>__LONG_WIDTH__</code><dt><code>__LONG_LONG_WIDTH__</code><dt><code>__PTRDIFF_WIDTH__</code><dt><code>__SIG_ATOMIC_WIDTH__</code><dt><code>__SIZE_WIDTH__</code><dt><code>__WCHAR_WIDTH__</code><dt><code>__WINT_WIDTH__</code><dt><code>__INT_LEAST8_WIDTH__</code><dt><code>__INT_LEAST16_WIDTH__</code><dt><code>__INT_LEAST32_WIDTH__</code><dt><code>__INT_LEAST64_WIDTH__</code><dt><code>__INT_FAST8_WIDTH__</code><dt><code>__INT_FAST16_WIDTH__</code><dt><code>__INT_FAST32_WIDTH__</code><dt><code>__INT_FAST64_WIDTH__</code><dt><code>__INTPTR_WIDTH__</code><dt><code>__INTMAX_WIDTH__</code><dd>Defined to the bit widths of the corresponding types.  They exist to
+make the implementations of <samp><span class="file">limits.h</span></samp> and <samp><span class="file">stdint.h</span></samp> behave
+correctly.  You should not use these macros directly; instead, include
+the appropriate headers.  Some of these macros may not be defined on
+particular systems if GCC does not provide a <samp><span class="file">stdint.h</span></samp> header on
+those systems.
 
      <br><dt><code>__SIZEOF_INT__</code><dt><code>__SIZEOF_LONG__</code><dt><code>__SIZEOF_LONG_LONG__</code><dt><code>__SIZEOF_SHORT__</code><dt><code>__SIZEOF_POINTER__</code><dt><code>__SIZEOF_FLOAT__</code><dt><code>__SIZEOF_DOUBLE__</code><dt><code>__SIZEOF_LONG_DOUBLE__</code><dt><code>__SIZEOF_SIZE_T__</code><dt><code>__SIZEOF_WCHAR_T__</code><dt><code>__SIZEOF_WINT_T__</code><dt><code>__SIZEOF_PTRDIFF_T__</code><dd>Defined to the number of bytes of the C standard data types: <code>int</code>,
 <code>long</code>, <code>long long</code>, <code>short</code>, <code>void *</code>, <code>float</code>,
@@ -325,6 +324,8 @@ in use.
 
      <br><dt><code>__SANITIZE_ADDRESS__</code><dd>This macro is defined, with value 1, when <samp><span class="option">-fsanitize=address</span></samp>
 or <samp><span class="option">-fsanitize=kernel-address</span></samp> are in use.
+
+     <br><dt><code>__SANITIZE_THREAD__</code><dd>This macro is defined, with value 1, when <samp><span class="option">-fsanitize=thread</span></samp> is in use.
 
      <br><dt><code>__TIMESTAMP__</code><dd>This macro expands to a string constant that describes the date and time
 of the last modification of the current source file. The string constant

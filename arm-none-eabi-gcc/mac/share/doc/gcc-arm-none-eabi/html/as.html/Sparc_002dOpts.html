@@ -11,7 +11,7 @@
 <!--
 This file documents the GNU Assembler "as".
 
-Copyright (C) 1991-2017 Free Software Foundation, Inc.
+Copyright (C) 1991-2018 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
@@ -44,9 +44,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Sparc_002dDependent.html#Sparc_002dDepe
 <hr>
 </div>
 
-<h4 class="subsection">9.43.1 Options</h4>
+<h4 class="subsection">9.44.1 Options</h4>
 
-<p><a name="index-options-for-SPARC-2017"></a><a name="index-SPARC-options-2018"></a><a name="index-architectures_002c-SPARC-2019"></a><a name="index-SPARC-architectures-2020"></a>The SPARC chip family includes several successive versions, using the same
+<p><a name="index-options-for-SPARC-2061"></a><a name="index-SPARC-options-2062"></a><a name="index-architectures_002c-SPARC-2063"></a><a name="index-SPARC-architectures-2064"></a>The SPARC chip family includes several successive versions, using the same
 core instruction set, but including a few additional instructions at
 each version.  There are exceptions to this however.  For details on what
 instructions each variant supports, please see the chip's architecture
@@ -67,28 +67,28 @@ is explicitly requested.  SPARC v9 is always incompatible with sparclite.
 <!-- The order here is the same as the order of enum sparc_opcode_arch_val -->
 <!-- to give the user a sense of the order of the "bumping". -->
 
-<a name="index-g_t_002dAv6-2021"></a>
-<a name="index-g_t_002dAv7-2022"></a>
-<a name="index-g_t_002dAv8-2023"></a>
-<a name="index-g_t_002dAleon-2024"></a>
-<a name="index-g_t_002dAsparclet-2025"></a>
-<a name="index-g_t_002dAsparclite-2026"></a>
-<a name="index-g_t_002dAv9-2027"></a>
-<a name="index-g_t_002dAv9a-2028"></a>
-<a name="index-g_t_002dAv9b-2029"></a>
-<a name="index-g_t_002dAv9c-2030"></a>
-<a name="index-g_t_002dAv9d-2031"></a>
-<a name="index-g_t_002dAv9e-2032"></a>
-<a name="index-g_t_002dAv9v-2033"></a>
-<a name="index-g_t_002dAv9m-2034"></a>
-<a name="index-g_t_002dAsparc-2035"></a>
-<a name="index-g_t_002dAsparcvis-2036"></a>
-<a name="index-g_t_002dAsparcvis2-2037"></a>
-<a name="index-g_t_002dAsparcfmaf-2038"></a>
-<a name="index-g_t_002dAsparcima-2039"></a>
-<a name="index-g_t_002dAsparcvis3-2040"></a>
-<a name="index-g_t_002dAsparcvis3r-2041"></a>
-<dl><dt><code>-Av6 | -Av7 | -Av8 | -Aleon | -Asparclet | -Asparclite</code><dt><code>-Av8plus | -Av8plusa | -Av8plusb | -Av8plusc | -Av8plusd | -Av8plusv | -Av8plusm</code><dt><code>-Av9 | -Av9a | -Av9b | -Av9c | -Av9d | -Av9e | -Av9v | -Av9m</code><dt><code>-Asparc | -Asparcvis | -Asparcvis2 | -Asparcfmaf | -Asparcima</code><dt><code>-Asparcvis3 | -Asparcvis3r | -Asparc5</code><dd>Use one of the `<samp><span class="samp">-A</span></samp>' options to select one of the SPARC
+<a name="index-g_t_002dAv6-2065"></a>
+<a name="index-g_t_002dAv7-2066"></a>
+<a name="index-g_t_002dAv8-2067"></a>
+<a name="index-g_t_002dAleon-2068"></a>
+<a name="index-g_t_002dAsparclet-2069"></a>
+<a name="index-g_t_002dAsparclite-2070"></a>
+<a name="index-g_t_002dAv9-2071"></a>
+<a name="index-g_t_002dAv9a-2072"></a>
+<a name="index-g_t_002dAv9b-2073"></a>
+<a name="index-g_t_002dAv9c-2074"></a>
+<a name="index-g_t_002dAv9d-2075"></a>
+<a name="index-g_t_002dAv9e-2076"></a>
+<a name="index-g_t_002dAv9v-2077"></a>
+<a name="index-g_t_002dAv9m-2078"></a>
+<a name="index-g_t_002dAsparc-2079"></a>
+<a name="index-g_t_002dAsparcvis-2080"></a>
+<a name="index-g_t_002dAsparcvis2-2081"></a>
+<a name="index-g_t_002dAsparcfmaf-2082"></a>
+<a name="index-g_t_002dAsparcima-2083"></a>
+<a name="index-g_t_002dAsparcvis3-2084"></a>
+<a name="index-g_t_002dAsparcvis3r-2085"></a>
+<dl><dt><code>-Av6 | -Av7 | -Av8 | -Aleon | -Asparclet | -Asparclite</code><dt><code>-Av8plus | -Av8plusa | -Av8plusb | -Av8plusc | -Av8plusd |</code><dt><code>-Av8plusv | -Av8plusm | -Av8plusm8</code><dt><code>-Av9 | -Av9a | -Av9b | -Av9c | -Av9d | -Av9e | -Av9v | -Av9m | -Av9m8</code><dt><code>-Asparc | -Asparcvis | -Asparcvis2 | -Asparcfmaf | -Asparcima</code><dt><code>-Asparcvis3 | -Asparcvis3r | -Asparc5 | -Asparc6</code><dd>Use one of the `<samp><span class="samp">-A</span></samp>' options to select one of the SPARC
 architectures explicitly.  If you select an architecture explicitly,
 <code>as</code> reports a fatal error if it encounters an instruction
 or feature requiring an incompatible or higher level.
@@ -126,6 +126,10 @@ enabled by `<samp><span class="samp">-Av8pluse</span></samp>' and `<samp><span c
 xmpmul, xmontmul and xmontsqr instructions, as well as the instructions
 enabled by `<samp><span class="samp">-Av8plusv</span></samp>' and `<samp><span class="samp">-Av9v</span></samp>'.
 
+     <p>`<samp><span class="samp">-Av8plusm8</span></samp>' and `<samp><span class="samp">-Av9m8</span></samp>' enable the instructions introduced
+in the Oracle SPARC Architecture 2017 and the M8 processor, as
+well as the instructions enabled by `<samp><span class="samp">-Av8plusm</span></samp>' and `<samp><span class="samp">-Av9m</span></samp>'.
+
      <p>`<samp><span class="samp">-Asparc</span></samp>' specifies a v9 environment.  It is equivalent to
 `<samp><span class="samp">-Av9</span></samp>' if the word size is 64-bit, and `<samp><span class="samp">-Av8plus</span></samp>' otherwise.
 
@@ -149,11 +153,14 @@ and floating point unfused multiply-add instructions enabled.
 
      <p>`<samp><span class="samp">-Asparc5</span></samp>' is equivalent to `<samp><span class="samp">-Av9m</span></samp>'.
 
-     <br><dt><code>-xarch=v8plus | -xarch=v8plusa | -xarch=v8plusb | -xarch=v8plusc</code><dt><code>-xarch=v8plusd | -xarch=v8plusv | -xarch=v8plusm | -xarch=v9 | -xarch=v9a</code><dt><code>-xarch=v9b | -xarch=v9c | -xarch=v9d | -xarch=v9e | -xarch=v9v | -xarch=v9m</code><dt><code>-xarch=sparc | -xarch=sparcvis | -xarch=sparcvis2</code><dt><code>-xarch=sparcfmaf | -xarch=sparcima | -xarch=sparcvis3</code><dt><code>-xarch=sparcvis3r | -xarch=sparc5</code><dd>For compatibility with the SunOS v9 assembler.  These options are
+     <p>`<samp><span class="samp">-Asparc6</span></samp>' is equivalent to `<samp><span class="samp">-Av9m8</span></samp>'.
+
+     <br><dt><code>-xarch=v8plus | -xarch=v8plusa | -xarch=v8plusb | -xarch=v8plusc</code><dt><code>-xarch=v8plusd | -xarch=v8plusv | -xarch=v8plusm |</code><dt><code>-xarch=v8plusm8 | -xarch=v9 | -xarch=v9a | -xarch=v9b</code><dt><code>-xarch=v9c | -xarch=v9d | -xarch=v9e | -xarch=v9v</code><dt><code>-xarch=v9m | -xarch=v9m8</code><dt><code>-xarch=sparc | -xarch=sparcvis | -xarch=sparcvis2</code><dt><code>-xarch=sparcfmaf | -xarch=sparcima | -xarch=sparcvis3</code><dt><code>-xarch=sparcvis3r | -xarch=sparc5 | -xarch=sparc6</code><dd>For compatibility with the SunOS v9 assembler.  These options are
 equivalent to -Av8plus, -Av8plusa, -Av8plusb, -Av8plusc, -Av8plusd,
--Av8plusv, -Av8plusm, -Av9, -Av9a, -Av9b, -Av9c, -Av9d, -Av9e, -Av9v, -Av9m,
--Asparc, -Asparcvis, -Asparcvis2, -Asparcfmaf, -Asparcima,
--Asparcvis3, and -Asparcvis3r, respectively.
+-Av8plusv, -Av8plusm, -Av8plusm8, -Av9, -Av9a, -Av9b, -Av9c, -Av9d,
+-Av9e, -Av9v, -Av9m, -Av9m8, -Asparc, -Asparcvis, -Asparcvis2,
+-Asparcfmaf, -Asparcima, -Asparcvis3, -Asparcvis3r, -Asparc5 and
+-Asparc6 respectively.
 
      <br><dt><code>-bump</code><dd>Warn whenever it is necessary to switch to another level. 
 If an architecture level is explicitly requested, GAS will not issue

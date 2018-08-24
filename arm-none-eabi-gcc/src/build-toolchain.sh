@@ -10,7 +10,7 @@
 #     * Redistributions in binary form must reproduce the above copyright
 #       notice, this list of conditions and the following disclaimer in the
 #       documentation and/or other materials provided with the distribution.
-#     * Neither the name of ARM nor the names of its contributors may be used
+#     * Neither the name of Arm nor the names of its contributors may be used
 #       to endorse or promote products derived from this software without
 #       specific prior written permission.
 # 
@@ -38,13 +38,14 @@ exec < /dev/null
 script_path=`cd $(dirname $0) && pwd -P`
 . $script_path/build-common.sh
 
-# This file contains the sequence of commands used to build the ARM EABI toolchain.
+# This file contains the sequence of commands used to build the
+# GNU Tools Arm Embedded toolchain.
 usage ()
 {
 cat<<EOF
 Usage: $0 [--build_type=...] [--skip_steps=...]
 
-This script will build gcc arm embedded toolchain.
+This script will build GNU Tools Arm Embedded toolchain.
 
 OPTIONS:
   --build_type=TYPE     specify build type to either ppa or native.
@@ -301,6 +302,7 @@ $SRCDIR/$NEWLIB/configure  \
     --htmldir=$INSTALLDIR_NATIVE_DOC/html \
     --pdfdir=$INSTALLDIR_NATIVE_DOC/pdf \
     --enable-newlib-io-long-long \
+    --enable-newlib-io-c99-formats \
     --enable-newlib-register-fini \
     --enable-newlib-retargetable-locking \
     --disable-newlib-supplied-syscalls \
@@ -474,11 +476,6 @@ echo Task [III-6] /$HOST_NATIVE/gdb/
 build_gdb()
 {
 	GDB_EXTRA_CONFIG_OPTS=$1
-
-	# Disable C++ build on Mac as the exception unwinding seems to be broken.
-	if [ "x$BUILD" == "xx86_64-apple-darwin10" ]; then
-	  GDB_EXTRA_CONFIG_OPTS="$GDB_EXTRA_CONFIG_OPTS --disable-build-with-cxx"
-	fi
 
 	rm -rf $BUILDDIR_NATIVE/gdb && mkdir -p $BUILDDIR_NATIVE/gdb
 	pushd $BUILDDIR_NATIVE/gdb

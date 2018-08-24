@@ -1,5 +1,5 @@
 # -*- python -*-
-# Copyright (C) 2009-2016 Free Software Foundation, Inc.
+# Copyright (C) 2009-2017 Free Software Foundation, Inc.
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,8 +19,8 @@ import gdb
 import os
 import os.path
 
-pythondir = '/tmp/jenkins-GCC-6-build_build-toolchain-mac-262_20170621_1498074986/install-native/share/gcc-arm-none-eabi'
-libdir = '/tmp/jenkins-GCC-6-build_build-toolchain-mac-262_20170621_1498074986/install-native/arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/softfp'
+pythondir = '/Users/build/work/GCC-7-build/install-native/share/gcc-arm-none-eabi'
+libdir = '/Users/build/work/GCC-7-build/install-native/arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/softfp'
 
 # This file might be loaded when there is no current objfile.  This
 # can happen if the user loads it manually.  In this case we don't

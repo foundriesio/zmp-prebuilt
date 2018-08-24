@@ -9,7 +9,7 @@
 <link rel="prev" href="Wrapper-Headers.html#Wrapper-Headers" title="Wrapper Headers">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1987-2016 Free Software Foundation, Inc.
+Copyright (C) 1987-2017 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -67,28 +67,18 @@ because of code in macros defined in system headers.
 
    <p>Normally, only the headers found in specific directories are considered
 system headers.  These directories are determined when GCC is compiled. 
-There are, however, two ways to make normal headers into system headers.
+There are, however, two ways to make normal headers into system headers:
 
-   <p>The <samp><span class="option">-isystem</span></samp> command-line option adds its argument to the list of
-directories to search for headers, just like <samp><span class="option">-I</span></samp>.  Any headers
-found in that directory will be considered system headers.
+     <ul>
+<li>Header files found in directories added to the search path with the
+<samp><span class="option">-isystem</span></samp> and <samp><span class="option">-idirafter</span></samp> command-line options are
+treated as system headers for the purposes of diagnostics.
 
-   <p>All directories named by <samp><span class="option">-isystem</span></samp> are searched <em>after</em> all
-directories named by <samp><span class="option">-I</span></samp>, no matter what their order was on the
-command line.  If the same directory is named by both <samp><span class="option">-I</span></samp> and
-<samp><span class="option">-isystem</span></samp>, the <samp><span class="option">-I</span></samp> option is ignored.  GCC provides an
-informative message when this occurs if <samp><span class="option">-v</span></samp> is used.
-
-   <p><a name="index-g_t_0023pragma-GCC-system_005fheader-40"></a>There is also a directive, <code>#pragma&nbsp;GCC&nbsp;system_header<!-- /@w --></code>, which
+     <li><a name="index-g_t_0023pragma-GCC-system_005fheader-40"></a>There is also a directive, <code>#pragma&nbsp;GCC&nbsp;system_header<!-- /@w --></code>, which
 tells GCC to consider the rest of the current include file a system
 header, no matter where it was found.  Code that comes before the
-`<samp><span class="samp">#pragma</span></samp>' in the file will not be affected.  <code>#pragma&nbsp;GCC&nbsp;system_header<!-- /@w --></code> has no effect in the primary source file.
-
-   <p>On very old systems, some of the pre-defined system header directories
-get even more special treatment.  GNU C++ considers code in headers
-found in those directories to be surrounded by an <code>extern&nbsp;"C"<!-- /@w --></code>
-block.  There is no way to request this behavior with a `<samp><span class="samp">#pragma</span></samp>',
-or from the command line.
+`<samp><span class="samp">#pragma</span></samp>' in the file is not affected.  <code>#pragma&nbsp;GCC&nbsp;system_header<!-- /@w --></code> has no effect in the primary source file. 
+</ul>
 
    </body></html>
 

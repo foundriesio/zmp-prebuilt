@@ -10,7 +10,7 @@
 <link rel="next" href="Front-End-Makefile.html#Front-End-Makefile" title="Front End Makefile">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1988-2016 Free Software Foundation, Inc.
+Copyright (C) 1988-2017 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -64,8 +64,8 @@ for some purposes such as arguments to <samp><span class="option">--enable-langu
 <br><dt><code>lang_requires</code><dd>If defined, this variable lists (space-separated) language front ends
 other than C that this front end requires to be enabled (with the
 names given being their <code>language</code> settings).  For example, the
-Java front end depends on the C++ front end, so sets
-`<samp><span class="samp">lang_requires=c++</span></samp>'. 
+Obj-C++ front end depends on the C++ and ObjC front ends, so sets
+`<samp><span class="samp">lang_requires="objc c++"</span></samp>'. 
 <br><dt><code>subdir_requires</code><dd>If defined, this variable lists (space-separated) front end directories
 other than C that this front end requires to be present.  For example,
 the Objective-C++ front end uses source files from the C++ and

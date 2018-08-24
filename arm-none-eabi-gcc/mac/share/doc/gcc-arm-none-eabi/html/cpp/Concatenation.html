@@ -6,11 +6,11 @@
 <meta name="generator" content="makeinfo 4.8">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Macros.html#Macros" title="Macros">
-<link rel="prev" href="Stringification.html#Stringification" title="Stringification">
+<link rel="prev" href="Stringizing.html#Stringizing" title="Stringizing">
 <link rel="next" href="Variadic-Macros.html#Variadic-Macros" title="Variadic Macros">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1987-2016 Free Software Foundation, Inc.
+Copyright (C) 1987-2017 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -49,7 +49,7 @@ This manual contains no Invariant Sections.  The Front-Cover Texts are
 <p>
 <a name="Concatenation"></a>
 Next:&nbsp;<a rel="next" accesskey="n" href="Variadic-Macros.html#Variadic-Macros">Variadic Macros</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Stringification.html#Stringification">Stringification</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Stringizing.html#Stringizing">Stringizing</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Macros.html#Macros">Macros</a>
 <hr>
 </div>
@@ -83,7 +83,7 @@ but you could just as well write them as one token in the first place.
 Token pasting is most useful when one or both of the tokens comes from a
 macro argument.  If either of the tokens next to an `<samp><span class="samp">##</span></samp>' is a
 parameter name, it is replaced by its actual argument before `<samp><span class="samp">##</span></samp>'
-executes.  As with stringification, the actual argument is not
+executes.  As with stringizing, the actual argument is not
 macro-expanded first.  If the argument is empty, that `<samp><span class="samp">##</span></samp>' has no
 effect.
 
@@ -115,7 +115,7 @@ as follows:
    <p>It would be cleaner not to have to give each command name twice, once in
 the string constant and once in the function name.  A macro which takes the
 name of a command as an argument can make this unnecessary.  The string
-constant can be created with stringification, and the function name by
+constant can be created with stringizing, and the function name by
 concatenating the argument with `<samp><span class="samp">_command</span></samp>'.  Here is how it is done:
 
 <pre class="smallexample">     #define COMMAND(NAME)  { #NAME, NAME ## _command }

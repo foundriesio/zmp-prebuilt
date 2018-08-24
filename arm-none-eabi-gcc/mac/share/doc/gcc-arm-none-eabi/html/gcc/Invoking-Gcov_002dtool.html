@@ -9,7 +9,7 @@
 <link rel="prev" href="Gcov_002dtool-Intro.html#Gcov_002dtool-Intro" title="Gcov-tool Intro">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1988-2016 Free Software Foundation, Inc.
+Copyright (C) 1988-2017 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -66,32 +66,30 @@ exit without doing any further processing.
 and exit without doing any further processing.
 
      <br><dt><code>merge</code><dd>Merge two profile directories.
-
           <dl>
-<dt><code>-v</code><dt><code>--verbose</code><dd>Set the verbose mode.
-
-          <br><dt><code>-o </code><var>directory</var><dt><code>--output </code><var>directory</var><dd>Set the output profile directory. Default output directory name is
+<dt><code>-o </code><var>directory</var><dt><code>--output </code><var>directory</var><dd>Set the output profile directory. Default output directory name is
 <var>merged_profile</var>.
+
+          <br><dt><code>-v</code><dt><code>--verbose</code><dd>Set the verbose mode.
 
           <br><dt><code>-w </code><var>w1</var><code>,</code><var>w2</var><dt><code>--weight </code><var>w1</var><code>,</code><var>w2</var><dd>Set the merge weights of the <var>directory1</var> and <var>directory2</var>,
 respectively. The default weights are 1 for both. 
 </dl>
 
      <br><dt><code>rewrite</code><dd>Read the specified profile directory and rewrite to a new directory.
-
           <dl>
-<dt><code>-v</code><dt><code>--verbose</code><dd>Set the verbose mode.
+<dt><code>-n </code><var>long_long_value</var><dt><code>--normalize &lt;long_long_value&gt;</code><dd>Normalize the profile. The specified value is the max counter value
+in the new profile.
 
           <br><dt><code>-o </code><var>directory</var><dt><code>--output </code><var>directory</var><dd>Set the output profile directory. Default output name is <var>rewrite_profile</var>.
 
           <br><dt><code>-s </code><var>float_or_simple-frac_value</var><dt><code>--scale </code><var>float_or_simple-frac_value</var><dd>Scale the profile counters. The specified value can be in floating point value,
 or simple fraction value form, such 1, 2, 2/3, and 5/3.
 
-          <br><dt><code>-n </code><var>long_long_value</var><dt><code>--normalize &lt;long_long_value&gt;</code><dd>Normalize the profile. The specified value is the max counter value
-in the new profile. 
+          <br><dt><code>-v</code><dt><code>--verbose</code><dd>Set the verbose mode. 
 </dl>
 
-     <br><dt><code>overlap</code><dd>Computer the overlap score between the two specified profile directories. 
+     <br><dt><code>overlap</code><dd>Compute the overlap score between the two specified profile directories. 
 The overlap score is computed based on the arc profiles. It is defined as
 the sum of min (p1_counter[i] / p1_sum_all, p2_counter[i] / p2_sum_all),
 for all arc counter i, where p1_counter[i] and p2_counter[i] are two
@@ -99,17 +97,17 @@ matched counters and p1_sum_all and p2_sum_all are the sum of counter
 values in profile 1 and profile 2, respectively.
 
           <dl>
-<dt><code>-v</code><dt><code>--verbose</code><dd>Set the verbose mode.
-
-          <br><dt><code>-h</code><dt><code>--hotonly</code><dd>Only print info for hot objects/functions.
-
-          <br><dt><code>-f</code><dt><code>--function</code><dd>Print function level overlap score.
+<dt><code>-f</code><dt><code>--function</code><dd>Print function level overlap score.
 
           <br><dt><code>-F</code><dt><code>--fullname</code><dd>Print full gcda filename.
 
+          <br><dt><code>-h</code><dt><code>--hotonly</code><dd>Only print info for hot objects/functions.
+
           <br><dt><code>-o</code><dt><code>--object</code><dd>Print object level overlap score.
 
-          <br><dt><code>-t </code><var>float</var><dt><code>--hot_threshold &lt;float&gt;</code><dd>Set the threshold for hot counter value. 
+          <br><dt><code>-t </code><var>float</var><dt><code>--hot_threshold &lt;float&gt;</code><dd>Set the threshold for hot counter value.
+
+          <br><dt><code>-v</code><dt><code>--verbose</code><dd>Set the verbose mode. 
 </dl>
 
  </dl>

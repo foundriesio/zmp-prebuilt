@@ -9,7 +9,7 @@
 <link rel="prev" href="Patching.html#Patching" title="Patching">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1988-2017 Free Software Foundation, Inc.
+Copyright (C) 1988-2018 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -46,14 +46,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Altering.html#Altering">Altering</a>
 
 <h3 class="section">17.7 Compiling and injecting code in <span class="sc">gdb</span></h3>
 
-<p><a name="index-injecting-code-1152"></a><a name="index-writing-into-executables-1153"></a><a name="index-compiling-code-1154"></a>
+<p><a name="index-injecting-code-1172"></a><a name="index-writing-into-executables-1173"></a><a name="index-compiling-code-1174"></a>
 <span class="sc">gdb</span> supports on-demand compilation and code injection into
 programs running under <span class="sc">gdb</span>.  GCC 5.0 or higher built with
 <samp><span class="file">libcc1.so</span></samp> must be installed for this functionality to be enabled. 
 This functionality is implemented with the following commands.
 
      
-<a name="index-compile-code-1155"></a>
+<a name="index-compile-code-1175"></a>
 <dl><dt><code>compile code </code><var>source-code</var><dt><code>compile code -raw </code><var>&ndash;</var> <var>source-code</var><dd>Compile <var>source-code</var> with the compiler language found as the current
 language in <span class="sc">gdb</span> (see <a href="Languages.html#Languages">Languages</a>).  If compilation and
 injection is not supported with the current language specified in
@@ -97,7 +97,7 @@ inferior.  Using `<samp><span class="samp">-raw</span></samp>' option may be nee
 <var>source-code</var> requires `<samp><span class="samp">#include</span></samp>' lines which may conflict with
 inferior symbols otherwise.
 
-     <p><a name="index-compile-file-1156"></a><br><dt><code>compile file </code><var>filename</var><dt><code>compile file -raw </code><var>filename</var><dd>Like <code>compile code</code>, but take the source code from <var>filename</var>.
+     <p><a name="index-compile-file-1176"></a><br><dt><code>compile file </code><var>filename</var><dt><code>compile file -raw </code><var>filename</var><dd>Like <code>compile code</code>, but take the source code from <var>filename</var>.
 
      <pre class="smallexample">          compile file /home/user/example.c
      </pre>
@@ -110,7 +110,7 @@ value of <var>expr</var> is printed in a format appropriate to its data type;
 you can choose a different format by specifying `<samp><span class="samp">/</span><var>f</var></samp>', where
 <var>f</var> is a letter specifying the format; see <a href="Output-Formats.html#Output-Formats">Output Formats</a>.
 
-     <br><dt><code>compile print</code><dt><code>compile print /</code><var>f</var><dd><a name="index-reprint-the-last-value-1157"></a>Alternatively you can enter the expression (source code producing it) as
+     <br><dt><code>compile print</code><dt><code>compile print /</code><var>f</var><dd><a name="index-reprint-the-last-value-1177"></a>Alternatively you can enter the expression (source code producing it) as
 multiple lines of text.  To enter this mode, invoke the `<samp><span class="samp">compile print</span></samp>'
 command without any text following the command.  This will start the
 multiple-line editor. 
@@ -120,7 +120,7 @@ multiple-line editor.
 
      <dl>
 <a name="set-debug-compile"></a>
-<dt><code>set debug compile</code><dd><a name="index-compile-command-debugging-info-1158"></a>Turns on or off display of <span class="sc">gdb</span> process of compiling and
+<dt><code>set debug compile</code><dd><a name="index-compile-command-debugging-info-1178"></a>Turns on or off display of <span class="sc">gdb</span> process of compiling and
 injecting the code.  The default is off.
 
      <br><dt><code>show debug compile</code><dd>Displays the current state of displaying <span class="sc">gdb</span> process of
@@ -154,7 +154,7 @@ try to enforce DWARF by using <code>-gdwarf-4</code>.
 <p class="noindent">You can override compilation options using the following command:
 
      <dl>
-<dt><code>set compile-args</code><dd><a name="index-compile-command-options-override-1159"></a>Set compilation options used for compiling and injecting code with the
+<dt><code>set compile-args</code><dd><a name="index-compile-command-options-override-1179"></a>Set compilation options used for compiling and injecting code with the
 <code>compile</code> commands.  These options override any conflicting ones
 from the target architecture and/or options stored during inferior
 compilation.
@@ -303,13 +303,14 @@ will print to the console.
 
 <h4 class="subsection">17.7.3 Compiler search for the <code>compile</code> command</h4>
 
-<p><span class="sc">gdb</span> needs to find <span class="sc">gcc</span> for the inferior being debugged which
-may not be obvious for remote targets of different architecture than where
-<span class="sc">gdb</span> is running.  Environment variable <code>PATH</code> (<code>PATH</code> from
-shell that executed <span class="sc">gdb</span>, not the one set by <span class="sc">gdb</span>
-command <code>set environment</code>).  See <a href="Environment.html#Environment">Environment</a>.  <code>PATH</code> on
+<p><span class="sc">gdb</span> needs to find <span class="sc">gcc</span> for the inferior being debugged
+which may not be obvious for remote targets of different architecture
+than where <span class="sc">gdb</span> is running.  Environment variable <code>PATH</code> on
 <span class="sc">gdb</span> host is searched for <span class="sc">gcc</span> binary matching the
-target architecture and operating system.
+target architecture and operating system.  This search can be overriden
+by <code>set compile-gcc</code> <span class="sc">gdb</span> command below.  <code>PATH</code> is
+taken from shell that executed <span class="sc">gdb</span>, it is not the value set by
+<span class="sc">gdb</span> command <code>set environment</code>).  See <a href="Environment.html#Environment">Environment</a>.
 
    <p>Specifically <code>PATH</code> is searched for binaries matching regular expression
 <var>arch</var><code>(-[^-]*)?-</code><var>os</var><code>-gcc</code> according to the inferior target being
@@ -318,6 +319,25 @@ example both <code>i386</code> and <code>x86_64</code> targets look for pattern
 <code>(x86_64|i.86)</code> and both <code>s390</code> and <code>s390x</code> targets look
 for pattern <code>s390x?</code>.  <var>os</var> is currently supported only for
 pattern <code>linux(-gnu)?</code>.
+
+   <p>On Posix hosts the compiler driver <span class="sc">gdb</span> needs to find also
+shared library <samp><span class="file">libcc1.so</span></samp> from the compiler.  It is searched in
+default shared library search path (overridable with usual environment
+variable <code>LD_LIBRARY_PATH</code>), unrelated to <code>PATH</code> or <code>set
+compile-gcc</code> settings.  Contrary to it <samp><span class="file">libcc1plugin.so</span></samp> is found
+according to the installation of the found compiler &mdash; as possibly
+specified by the <code>set compile-gcc</code> command.
+
+     <dl>
+<dt><code>set compile-gcc</code><dd><a name="index-compile-command-driver-filename-override-1180"></a>Set compilation command used for compiling and injecting code with the
+<code>compile</code> commands.  If this option is not set (it is set to
+an empty string), the search described above will occur &mdash; that is the
+default.
+
+     <br><dt><code>show compile-gcc</code><dd>Displays the current compile command <span class="sc">gcc</span> driver filename. 
+If set, it is the main command <samp><span class="command">gcc</span></samp>, found usually for example
+under name <samp><span class="file">x86_64-linux-gnu-gcc</span></samp>. 
+</dl>
 
    </body></html>
 

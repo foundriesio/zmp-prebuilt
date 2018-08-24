@@ -9,7 +9,7 @@
 <link rel="next" href="ranlib.html#ranlib" title="ranlib">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-Copyright (C) 1991-2017 Free Software Foundation, Inc.
+Copyright (C) 1991-2018 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
@@ -44,7 +44,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 
 <h2 class="chapter">4 objdump</h2>
 
-<p><a name="index-object-file-information-67"></a><a name="index-objdump-68"></a>
+<p><a name="index-object-file-information-69"></a><a name="index-objdump-70"></a>
 <!-- man title objdump display information from object files. -->
 
 <pre class="smallexample">     <!-- man begin SYNOPSIS objdump -->
@@ -72,11 +72,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
              [<samp><span class="option">-r</span></samp>|<samp><span class="option">--reloc</span></samp>]
              [<samp><span class="option">-R</span></samp>|<samp><span class="option">--dynamic-reloc</span></samp>]
              [<samp><span class="option">-s</span></samp>|<samp><span class="option">--full-contents</span></samp>]
-             [<samp><span class="option">-W[lLiaprmfFsoRt]</span></samp>|
-              <samp><span class="option">--dwarf</span></samp>[=rawline,=decodedline,=info,=abbrev,=pubnames]
-                      [=aranges,=macro,=frames,=frames-interp,=str,=loc]
-                      [=Ranges,=pubtypes,=trace_info,=trace_abbrev]
-                      [=trace_aranges,=gdb_index]
+             [<samp><span class="option">-W[lLiaprmfFsoRtUuTgAckK]</span></samp>|
+              <samp><span class="option">--dwarf</span></samp>[=rawline,=decodedline,=info,=abbrev,=pubnames,=aranges,=macro,=frames,=frames-interp,=str,=loc,=Ranges,=pubtypes,=trace_info,=trace_abbrev,=trace_aranges,=gdb_index,=addr,=cu_index,=links,=follow-links]
              [<samp><span class="option">-G</span></samp>|<samp><span class="option">--stabs</span></samp>]
              [<samp><span class="option">-t</span></samp>|<samp><span class="option">--syms</span></samp>]
              [<samp><span class="option">-T</span></samp>|<samp><span class="option">--dynamic-syms</span></samp>]
@@ -116,18 +113,18 @@ equivalent.  At least one option from the list
 <samp><span class="option">-a,-d,-D,-e,-f,-g,-G,-h,-H,-p,-P,-r,-R,-s,-S,-t,-T,-V,-x</span></samp> must be given.
 
      <dl>
-<dt><samp><span class="env">-a</span></samp><dt><samp><span class="env">--archive-header</span></samp><dd><a name="index-archive-headers-69"></a>If any of the <var>objfile</var> files are archives, display the archive
+<dt><samp><span class="env">-a</span></samp><dt><samp><span class="env">--archive-header</span></samp><dd><a name="index-archive-headers-71"></a>If any of the <var>objfile</var> files are archives, display the archive
 header information (in a format similar to `<samp><span class="samp">ls -l</span></samp>').  Besides the
 information you could list with `<samp><span class="samp">ar tv</span></samp>', `<samp><span class="samp">objdump -a</span></samp>' shows
 the object file format of each archive member.
 
-     <br><dt><samp><span class="env">--adjust-vma=</span><var>offset</var></samp><dd><a name="index-section-addresses-in-objdump-70"></a><a name="index-VMA-in-objdump-71"></a>When dumping information, first add <var>offset</var> to all the section
+     <br><dt><samp><span class="env">--adjust-vma=</span><var>offset</var></samp><dd><a name="index-section-addresses-in-objdump-72"></a><a name="index-VMA-in-objdump-73"></a>When dumping information, first add <var>offset</var> to all the section
 addresses.  This is useful if the section addresses do not correspond to
 the symbol table, which can happen when putting sections at particular
 addresses when using a format which can not represent section addresses,
 such as a.out.
 
-     <br><dt><samp><span class="env">-b </span><var>bfdname</var></samp><dt><samp><span class="env">--target=</span><var>bfdname</var></samp><dd><a name="index-object-code-format-72"></a>Specify that the object-code format for the object files is
+     <br><dt><samp><span class="env">-b </span><var>bfdname</var></samp><dt><samp><span class="env">--target=</span><var>bfdname</var></samp><dd><a name="index-object-code-format-74"></a>Specify that the object-code format for the object files is
 <var>bfdname</var>.  This option may not be necessary; <var>objdump</var> can
 automatically recognize many formats.
 
@@ -140,7 +137,7 @@ file in the format produced by Oasys compilers.  You can list the
 formats available with the <samp><span class="option">-i</span></samp> option. 
 See <a href="Target-Selection.html#Target-Selection">Target Selection</a>, for more information.
 
-     <br><dt><samp><span class="env">-C</span></samp><dt><samp><span class="env">--demangle[=</span><var>style</var><span class="env">]</span></samp><dd><a name="index-demangling-in-objdump-73"></a>Decode (<dfn>demangle</dfn>) low-level symbol names into user-level names. 
+     <br><dt><samp><span class="env">-C</span></samp><dt><samp><span class="env">--demangle[=</span><var>style</var><span class="env">]</span></samp><dd><a name="index-demangling-in-objdump-75"></a>Decode (<dfn>demangle</dfn>) low-level symbol names into user-level names. 
 Besides removing any initial underscore prepended by the system, this
 makes C++ function names readable.  Different compilers have different
 mangling styles. The optional demangling style argument can be used to
@@ -156,7 +153,7 @@ the file.
      <br><dt><samp><span class="env">-e</span></samp><dt><samp><span class="env">--debugging-tags</span></samp><dd>Like <samp><span class="option">-g</span></samp>, but the information is generated in a format compatible
 with ctags tool.
 
-     <br><dt><samp><span class="env">-d</span></samp><dt><samp><span class="env">--disassemble</span></samp><dd><a name="index-disassembling-object-code-74"></a><a name="index-machine-instructions-75"></a>Display the assembler mnemonics for the machine instructions from
+     <br><dt><samp><span class="env">-d</span></samp><dt><samp><span class="env">--disassemble</span></samp><dd><a name="index-disassembling-object-code-76"></a><a name="index-machine-instructions-77"></a>Display the assembler mnemonics for the machine instructions from
 <var>objfile</var>.  This option only disassembles those sections which are
 expected to contain instructions.
 
@@ -179,25 +176,25 @@ sections as if they were instructions.
      <br><dt><samp><span class="env">--prefix-addresses</span></samp><dd>When disassembling, print the complete address on each line.  This is
 the older disassembly format.
 
-     <br><dt><samp><span class="env">-EB</span></samp><dt><samp><span class="env">-EL</span></samp><dt><samp><span class="env">--endian={big|little}</span></samp><dd><a name="index-endianness-76"></a><a name="index-disassembly-endianness-77"></a>Specify the endianness of the object files.  This only affects
+     <br><dt><samp><span class="env">-EB</span></samp><dt><samp><span class="env">-EL</span></samp><dt><samp><span class="env">--endian={big|little}</span></samp><dd><a name="index-endianness-78"></a><a name="index-disassembly-endianness-79"></a>Specify the endianness of the object files.  This only affects
 disassembly.  This can be useful when disassembling a file format which
 does not describe endianness information, such as S-records.
 
-     <br><dt><samp><span class="env">-f</span></samp><dt><samp><span class="env">--file-headers</span></samp><dd><a name="index-object-file-header-78"></a>Display summary information from the overall header of
+     <br><dt><samp><span class="env">-f</span></samp><dt><samp><span class="env">--file-headers</span></samp><dd><a name="index-object-file-header-80"></a>Display summary information from the overall header of
 each of the <var>objfile</var> files.
 
-     <br><dt><samp><span class="env">-F</span></samp><dt><samp><span class="env">--file-offsets</span></samp><dd><a name="index-object-file-offsets-79"></a>When disassembling sections, whenever a symbol is displayed, also
+     <br><dt><samp><span class="env">-F</span></samp><dt><samp><span class="env">--file-offsets</span></samp><dd><a name="index-object-file-offsets-81"></a>When disassembling sections, whenever a symbol is displayed, also
 display the file offset of the region of data that is about to be
 dumped.  If zeroes are being skipped, then when disassembly resumes,
 tell the user how many zeroes were skipped and the file offset of the
 location from where the disassembly resumes.  When dumping sections,
 display the file offset of the location from where the dump starts.
 
-     <br><dt><samp><span class="env">--file-start-context</span></samp><dd><a name="index-source-code-context-80"></a>Specify that when displaying interlisted source code/disassembly
+     <br><dt><samp><span class="env">--file-start-context</span></samp><dd><a name="index-source-code-context-82"></a>Specify that when displaying interlisted source code/disassembly
 (assumes <samp><span class="option">-S</span></samp>) from a file that has not yet been displayed, extend the
 context to the start of the file.
 
-     <br><dt><samp><span class="env">-h</span></samp><dt><samp><span class="env">--section-headers</span></samp><dt><samp><span class="env">--headers</span></samp><dd><a name="index-section-headers-81"></a>Display summary information from the section headers of the
+     <br><dt><samp><span class="env">-h</span></samp><dt><samp><span class="env">--section-headers</span></samp><dt><samp><span class="env">--headers</span></samp><dd><a name="index-section-headers-83"></a>Display summary information from the section headers of the
 object file.
 
      <p>File segments may be relocated to nonstandard addresses, for example by
@@ -216,16 +213,16 @@ since the exact setting of the flag bits might be important.
 
      <br><dt><samp><span class="env">-H</span></samp><dt><samp><span class="env">--help</span></samp><dd>Print a summary of the options to <samp><span class="command">objdump</span></samp> and exit.
 
-     <br><dt><samp><span class="env">-i</span></samp><dt><samp><span class="env">--info</span></samp><dd><a name="index-architectures-available-82"></a><a name="index-object-formats-available-83"></a>Display a list showing all architectures and object formats available
+     <br><dt><samp><span class="env">-i</span></samp><dt><samp><span class="env">--info</span></samp><dd><a name="index-architectures-available-84"></a><a name="index-object-formats-available-85"></a>Display a list showing all architectures and object formats available
 for specification with <samp><span class="option">-b</span></samp> or <samp><span class="option">-m</span></samp>.
 
-     <br><dt><samp><span class="env">-j </span><var>name</var></samp><dt><samp><span class="env">--section=</span><var>name</var></samp><dd><a name="index-section-information-84"></a>Display information only for section <var>name</var>.
+     <br><dt><samp><span class="env">-j </span><var>name</var></samp><dt><samp><span class="env">--section=</span><var>name</var></samp><dd><a name="index-section-information-86"></a>Display information only for section <var>name</var>.
 
-     <br><dt><samp><span class="env">-l</span></samp><dt><samp><span class="env">--line-numbers</span></samp><dd><a name="index-source-filenames-for-object-files-85"></a>Label the display (using debugging information) with the filename and
+     <br><dt><samp><span class="env">-l</span></samp><dt><samp><span class="env">--line-numbers</span></samp><dd><a name="index-source-filenames-for-object-files-87"></a>Label the display (using debugging information) with the filename and
 source line numbers corresponding to the object code or relocs shown. 
 Only useful with <samp><span class="option">-d</span></samp>, <samp><span class="option">-D</span></samp>, or <samp><span class="option">-r</span></samp>.
 
-     <br><dt><samp><span class="env">-m </span><var>machine</var></samp><dt><samp><span class="env">--architecture=</span><var>machine</var></samp><dd><a name="index-architecture-86"></a><a name="index-disassembly-architecture-87"></a>Specify the architecture to use when disassembling object files.  This
+     <br><dt><samp><span class="env">-m </span><var>machine</var></samp><dt><samp><span class="env">--architecture=</span><var>machine</var></samp><dd><a name="index-architecture-88"></a><a name="index-disassembly-architecture-89"></a>Specify the architecture to use when disassembling object files.  This
 can be useful when disassembling object files which do not describe
 architecture information, such as S-records.  You can list the available
 architectures with the <samp><span class="option">-i</span></samp> option.
@@ -249,7 +246,19 @@ precision FP instructions, <samp><span class="option">quarkse_em</span></samp> s
 special QuarkSE-EM instructions, <samp><span class="option">fpuda</span></samp> selects the printing
 of double precision assist instructions, <samp><span class="option">fpus</span></samp> selects the
 printing of FPU single precision FP instructions, while <samp><span class="option">fpud</span></samp>
-selects the printing of FPU souble precision FP instructions.
+selects the printing of FPU souble precision FP instructions. 
+Additionally, one can choose to have all the immediates printed in
+hexadecimal using <samp><span class="option">hex</span></samp>.  By default, the short immediates are
+printed using the decimal representation, while the long immediate
+values are printed as hexadecimal.
+
+     <p><samp><span class="option">cpu=...</span></samp> allows to enforce a particular ISA when disassembling
+instructions, overriding the <samp><span class="option">-m</span></samp> value or whatever is in the ELF file. 
+This might be useful to select ARC EM or HS ISA, because architecture is same
+for those and disassembler relies on private ELF header data to decide if code
+is for EM or HS.  This option might be specified multiple times - only the
+latest value will be used.  Valid values are same as for the assembler
+<samp><span class="option">-mcpu=...</span></samp> option.
 
      <p>If the target is an ARM architecture then this switch can be used to
 select which register name set is used during disassembler.  Specifying
@@ -293,12 +302,34 @@ appear later in the option string.
 suffix even when the suffix could be inferred by the operands. 
 </dl>
 
-     <p>For PowerPC, <samp><span class="option">booke</span></samp> controls the disassembly of BookE
-instructions.  <samp><span class="option">32</span></samp> and <samp><span class="option">64</span></samp> select PowerPC and
-PowerPC64 disassembly, respectively.  <samp><span class="option">e300</span></samp> selects
-disassembly for the e300 family.  <samp><span class="option">440</span></samp> selects disassembly for
-the PowerPC 440.  <samp><span class="option">ppcps</span></samp> selects disassembly for the paired
-single instructions of the PPC750CL.
+     <p>For PowerPC, the <samp><span class="option">-M</span></samp> argument <samp><span class="option">raw</span></samp> selects
+disasssembly of hardware insns rather than aliases.  For example, you
+will see <code>rlwinm</code> rather than <code>clrlwi</code>, and <code>addi</code>
+rather than <code>li</code>.  All of the <samp><span class="option">-m</span></samp> arguments for
+<samp><span class="command">gas</span></samp> that select a CPU are supported.  These are:
+<samp><span class="option">403</span></samp>, <samp><span class="option">405</span></samp>, <samp><span class="option">440</span></samp>, <samp><span class="option">464</span></samp>, <samp><span class="option">476</span></samp>,
+<samp><span class="option">601</span></samp>, <samp><span class="option">603</span></samp>, <samp><span class="option">604</span></samp>, <samp><span class="option">620</span></samp>, <samp><span class="option">7400</span></samp>,
+<samp><span class="option">7410</span></samp>, <samp><span class="option">7450</span></samp>, <samp><span class="option">7455</span></samp>, <samp><span class="option">750cl</span></samp>,
+<samp><span class="option">821</span></samp>, <samp><span class="option">850</span></samp>, <samp><span class="option">860</span></samp>, <samp><span class="option">a2</span></samp>, <samp><span class="option">booke</span></samp>,
+<samp><span class="option">booke32</span></samp>, <samp><span class="option">cell</span></samp>, <samp><span class="option">com</span></samp>, <samp><span class="option">e200z4</span></samp>,
+<samp><span class="option">e300</span></samp>, <samp><span class="option">e500</span></samp>, <samp><span class="option">e500mc</span></samp>, <samp><span class="option">e500mc64</span></samp>,
+<samp><span class="option">e500x2</span></samp>, <samp><span class="option">e5500</span></samp>, <samp><span class="option">e6500</span></samp>, <samp><span class="option">efs</span></samp>,
+<samp><span class="option">power4</span></samp>, <samp><span class="option">power5</span></samp>, <samp><span class="option">power6</span></samp>, <samp><span class="option">power7</span></samp>,
+<samp><span class="option">power8</span></samp>, <samp><span class="option">power9</span></samp>, <samp><span class="option">ppc</span></samp>, <samp><span class="option">ppc32</span></samp>,
+<samp><span class="option">ppc64</span></samp>, <samp><span class="option">ppc64bridge</span></samp>, <samp><span class="option">ppcps</span></samp>, <samp><span class="option">pwr</span></samp>,
+<samp><span class="option">pwr2</span></samp>, <samp><span class="option">pwr4</span></samp>, <samp><span class="option">pwr5</span></samp>, <samp><span class="option">pwr5x</span></samp>,
+<samp><span class="option">pwr6</span></samp>, <samp><span class="option">pwr7</span></samp>, <samp><span class="option">pwr8</span></samp>, <samp><span class="option">pwr9</span></samp>,
+<samp><span class="option">pwrx</span></samp>, <samp><span class="option">titan</span></samp>, and <samp><span class="option">vle</span></samp>. 
+<samp><span class="option">32</span></samp> and <samp><span class="option">64</span></samp> modify the default or a prior CPU
+selection, disabling and enabling 64-bit insns respectively.  In
+addition, <samp><span class="option">altivec</span></samp>, <samp><span class="option">any</span></samp>, <samp><span class="option">htm</span></samp>, <samp><span class="option">vsx</span></samp>,
+and <samp><span class="option">spe</span></samp> add capabilities to a previous <em>or later</em> CPU
+selection.  <samp><span class="option">any</span></samp> will disassemble any opcode known to
+binutils, but in cases where an opcode has two different meanings or
+different arguments, you may not see the disassembly you expect. 
+If you disassemble without giving a CPU selection, a default will be
+chosen from information gleaned by BFD from the object files headers,
+but the result again may not be as you expect.
 
      <p>For MIPS, this option controls the printing of instruction mnemonic
 names and register names in disassembled instructions.  Multiple
@@ -368,26 +399,26 @@ format (the lists of options is displayed with the help).
      <p>Not all object formats support this option.  In particular the ELF
 format does not use it.
 
-     <br><dt><samp><span class="env">-r</span></samp><dt><samp><span class="env">--reloc</span></samp><dd><a name="index-relocation-entries_002c-in-object-file-88"></a>Print the relocation entries of the file.  If used with <samp><span class="option">-d</span></samp> or
+     <br><dt><samp><span class="env">-r</span></samp><dt><samp><span class="env">--reloc</span></samp><dd><a name="index-relocation-entries_002c-in-object-file-90"></a>Print the relocation entries of the file.  If used with <samp><span class="option">-d</span></samp> or
 <samp><span class="option">-D</span></samp>, the relocations are printed interspersed with the
 disassembly.
 
-     <br><dt><samp><span class="env">-R</span></samp><dt><samp><span class="env">--dynamic-reloc</span></samp><dd><a name="index-dynamic-relocation-entries_002c-in-object-file-89"></a>Print the dynamic relocation entries of the file.  This is only
+     <br><dt><samp><span class="env">-R</span></samp><dt><samp><span class="env">--dynamic-reloc</span></samp><dd><a name="index-dynamic-relocation-entries_002c-in-object-file-91"></a>Print the dynamic relocation entries of the file.  This is only
 meaningful for dynamic objects, such as certain types of shared
 libraries.  As for <samp><span class="option">-r</span></samp>, if used with <samp><span class="option">-d</span></samp> or
 <samp><span class="option">-D</span></samp>, the relocations are printed interspersed with the
 disassembly.
 
-     <br><dt><samp><span class="env">-s</span></samp><dt><samp><span class="env">--full-contents</span></samp><dd><a name="index-sections_002c-full-contents-90"></a><a name="index-object-file-sections-91"></a>Display the full contents of any sections requested.  By default all
+     <br><dt><samp><span class="env">-s</span></samp><dt><samp><span class="env">--full-contents</span></samp><dd><a name="index-sections_002c-full-contents-92"></a><a name="index-object-file-sections-93"></a>Display the full contents of any sections requested.  By default all
 non-empty sections are displayed.
 
-     <br><dt><samp><span class="env">-S</span></samp><dt><samp><span class="env">--source</span></samp><dd><a name="index-source-disassembly-92"></a><a name="index-disassembly_002c-with-source-93"></a>Display source code intermixed with disassembly, if possible.  Implies
+     <br><dt><samp><span class="env">-S</span></samp><dt><samp><span class="env">--source</span></samp><dd><a name="index-source-disassembly-94"></a><a name="index-disassembly_002c-with-source-95"></a>Display source code intermixed with disassembly, if possible.  Implies
 <samp><span class="option">-d</span></samp>.
 
-     <br><dt><samp><span class="env">--prefix=</span><var>prefix</var></samp><dd><a name="index-Add-prefix-to-absolute-paths-94"></a>Specify <var>prefix</var> to add to the absolute paths when used with
+     <br><dt><samp><span class="env">--prefix=</span><var>prefix</var></samp><dd><a name="index-Add-prefix-to-absolute-paths-96"></a>Specify <var>prefix</var> to add to the absolute paths when used with
 <samp><span class="option">-S</span></samp>.
 
-     <br><dt><samp><span class="env">--prefix-strip=</span><var>level</var></samp><dd><a name="index-Strip-absolute-paths-95"></a>Indicate how many initial directory names to strip off the hardwired
+     <br><dt><samp><span class="env">--prefix-strip=</span><var>level</var></samp><dd><a name="index-Strip-absolute-paths-97"></a>Indicate how many initial directory names to strip off the hardwired
 absolute paths. It has no effect without <samp><span class="option">--prefix=</span></samp><var>prefix</var>.
 
      <br><dt><samp><span class="env">--show-raw-insn</span></samp><dd>When disassembling instructions, print the instruction in hex as well as
@@ -397,22 +428,94 @@ in symbolic form.  This is the default except when
      <br><dt><samp><span class="env">--no-show-raw-insn</span></samp><dd>When disassembling instructions, do not print the instruction bytes. 
 This is the default when <samp><span class="option">--prefix-addresses</span></samp> is used.
 
-     <br><dt><samp><span class="env">--insn-width=</span><var>width</var></samp><dd><a name="index-Instruction-width-96"></a>Display <var>width</var> bytes on a single line when disassembling
+     <br><dt><samp><span class="env">--insn-width=</span><var>width</var></samp><dd><a name="index-Instruction-width-98"></a>Display <var>width</var> bytes on a single line when disassembling
 instructions.
 
-     <br><dt><samp><span class="env">-W[lLiaprmfFsoRt]</span></samp><dt><samp><span class="env">--dwarf[=rawline,=decodedline,=info,=abbrev,=pubnames]</span></samp><dt><samp><span class="env">--dwarf[=aranges,=macro,=frames,=frames-interp,=str,=loc]</span></samp><dt><samp><span class="env">--dwarf[=Ranges,=pubtypes,=trace_info,=trace_abbrev]</span></samp><dt><samp><span class="env">--dwarf[=trace_aranges,=gdb_index]</span></samp><dd><a name="index-DWARF-97"></a><a name="index-debug-symbols-98"></a>Displays the contents of the debug sections in the file, if any are
-present.  If one of the optional letters or words follows the switch
-then only data found in those specific sections will be dumped.
+     <br><dt><samp><span class="env">-W[lLiaprmfFsoRtUuTgAckK]</span></samp><dt><samp><span class="env">--dwarf[=rawline,=decodedline,=info,=abbrev,=pubnames,=aranges,=macro,=frames,=frames-interp,=str,=loc,=Ranges,=pubtypes,=trace_info,=trace_abbrev,=trace_aranges,=gdb_index,=addr,=cu_index,=links,=follow-links]</span></samp><dd><!-- This file contains the entry for the -w/-debug-dump (readelf) and -->
+<!-- W/-dwarf (objdump) option that is common to both readelf and objdump. -->
 
-     <p>Note that there is no single letter option to display the content of
-trace sections or .gdb_index.
+     <p>Displays the contents of the DWARF debug sections in the file, if any
+are present.  Compressed debug sections are automatically decompressed
+(temporarily) before they are displayed.  If one or more of the
+optional letters or words follows the switch then only those type(s)
+of data will be dumped.  The letters and words refer to the following
+information:
 
-     <p>Note: the output from the <samp><span class="option">=info</span></samp> option can also be affected
-by the options <samp><span class="option">--dwarf-depth</span></samp>, the <samp><span class="option">--dwarf-start</span></samp> and
-the <samp><span class="option">--dwarf-check</span></samp>.
+     <!-- Please Keep This Table Alpha Sorted. -->
+<dl>
+<dt><code>a</code><dt><code>=abbrev</code><dd>Displays the contents of the `<samp><span class="samp">.debug_abbrev</span></samp>' section.
+
+          <br><dt><code>A</code><dt><code>=addr</code><dd>Displays the contents of the `<samp><span class="samp">.debug_addr</span></samp>' section.
+
+          <br><dt><code>c</code><dt><code>=cu_index</code><dd>Displays the contents of the `<samp><span class="samp">.debug_cu_index</span></samp>' and/or
+`<samp><span class="samp">.debug_tu_index</span></samp>' sections.
+
+          <br><dt><code>f</code><dt><code>=frames</code><dd>Display the raw contents of a `<samp><span class="samp">.debug_frame</span></samp>' section.
+
+          <br><dt><code>F</code><br><dt><code>=frame-interp</code><dd>Display the interpreted contents of a `<samp><span class="samp">.debug_frame</span></samp>' section.
+
+          <br><dt><code>g</code><dt><code>=gdb_index</code><dd>Displays the contents of the `<samp><span class="samp">.gdb_index</span></samp>' and/or
+`<samp><span class="samp">.debug_names</span></samp>' sections.
+
+          <br><dt><code>i</code><dt><code>=info</code><dd>Displays the contents of the `<samp><span class="samp">.debug_info</span></samp>' section.  Note: the
+output from this option can also be restricted by the use of the
+<samp><span class="option">--dwarf-depth</span></samp> and <samp><span class="option">--dwarf-start</span></samp> options.
+
+          <br><dt><code>k</code><dt><code>=links</code><dd>Displays the contents of the `<samp><span class="samp">.gnu_debuglink</span></samp>' and/or
+`<samp><span class="samp">.gnu_debugaltlink</span></samp>' sections.  Also displays the link to a
+separate dwarf object file (dwo), if one is specified by the
+DW_AT_GNU_dwo_name or DW_AT_dwo_name attributes in the
+`<samp><span class="samp">.debug_info</span></samp>' section.
+
+          <br><dt><code>K</code><dt><code>=follow-links</code><dd>Display the contents of any selected debug sections that are found in
+a linked, separate debug info file.  This can result in multiple
+versions of the same debug section being displayed if both the main
+file and the separate debug info file contain sections with the same
+name.
+
+          <p>In addition, when displaying DWARF attributes, if a form is found that
+references the separate debug info file, then the referenced contents
+will also be displayed.
+
+          <br><dt><code>l</code><dt><code>=rawline</code><dd>Displays the contents of the `<samp><span class="samp">.debug_line</span></samp>' section in a raw
+format.
+
+          <br><dt><code>L</code><br><dt><code>=decodedline</code><dd>Displays the interpreted contents of the `<samp><span class="samp">.debug_line</span></samp>' section.
+
+          <br><dt><code>m</code><dt><code>=macro</code><dd>Displays the contents of the `<samp><span class="samp">.debug_macro</span></samp>' and/or
+`<samp><span class="samp">.debug_macinfo</span></samp>' sections.
+
+          <br><dt><code>o</code><dt><code>=loc</code><dd>Displays the contents of the `<samp><span class="samp">.debug_loc</span></samp>' and/or
+`<samp><span class="samp">.debug_loclists</span></samp>' sections.
+
+          <br><dt><code>p</code><dt><code>=pubnames</code><dd>Displays the contents of the `<samp><span class="samp">.debug_pubnames</span></samp>' and/or
+`<samp><span class="samp">.debug_gnu_pubnames</span></samp>' sections.
+
+          <br><dt><code>r</code><dt><code>=aranges</code><dd>Displays the contents of the `<samp><span class="samp">.debug_aranges</span></samp>' section.
+
+          <br><dt><code>R</code><dt><code>=Ranges</code><dd>Displays the contents of the `<samp><span class="samp">.debug_ranges</span></samp>' and/or
+`<samp><span class="samp">.debug_rnglists</span></samp>' sections.
+
+          <br><dt><code>s</code><dt><code>=str</code><dd>Displays the contents of the `<samp><span class="samp">.debug_str</span></samp>', `<samp><span class="samp">.debug_line_str</span></samp>'
+and/or `<samp><span class="samp">.debug_str_offsets</span></samp>' sections.
+
+          <br><dt><code>t</code><dt><code>=pubtype</code><dd>Displays the contents of the `<samp><span class="samp">.debug_pubtypes</span></samp>' and/or
+`<samp><span class="samp">.debug_gnu_pubtypes</span></samp>' sections.
+
+          <br><dt><code>T</code><dt><code>=trace_aranges</code><dd>Displays the contents of the `<samp><span class="samp">.trace_aranges</span></samp>' section.
+
+          <br><dt><code>u</code><dt><code>=trace_abbrev</code><dd>Displays the contents of the `<samp><span class="samp">.trace_abbrev</span></samp>' section.
+
+          <br><dt><code>U</code><dt><code>=trace_info</code><dd>Displays the contents of the `<samp><span class="samp">.trace_info</span></samp>' section.
+
+     </dl>
+
+     <p>Note: displaying the contents of `<samp><span class="samp">.debug_static_funcs</span></samp>',
+`<samp><span class="samp">.debug_static_vars</span></samp>' and `<samp><span class="samp">debug_weaknames</span></samp>' sections is not
+currently supported.
 
      <br><dt><samp><span class="env">--dwarf-depth=</span><var>n</var></samp><dd>Limit the dump of the <code>.debug_info</code> section to <var>n</var> children. 
-This is only useful with <samp><span class="option">--dwarf=info</span></samp>.  The default is
+This is only useful with <samp><span class="option">--debug-dump=info</span></samp>.  The default is
 to print all DIEs; the special value 0 for <var>n</var> will also have this
 effect.
 
@@ -420,7 +523,7 @@ effect.
 levels will not be printed.  The range for <var>n</var> is zero-based.
 
      <br><dt><samp><span class="env">--dwarf-start=</span><var>n</var></samp><dd>Print only DIEs beginning with the DIE numbered <var>n</var>.  This is only
-useful with <samp><span class="option">--dwarf=info</span></samp>.
+useful with <samp><span class="option">--debug-dump=info</span></samp>.
 
      <p>If specified, this option will suppress printing of any header
 information and all DIEs before the DIE numbered <var>n</var>.  Only
